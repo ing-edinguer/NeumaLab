@@ -1,0 +1,409 @@
+@import "tailwindcss";
+
+:root {
+  /* Raw tokens for Modo Pergamino (light) and Modo Oscuro Monástico (dark) */
+  --nm-bg-primary-light: #F5E6C8;
+  --nm-bg-primary-dark: #121316;
+
+  --nm-bg-secondary-light: #EFE0BB;
+  --nm-bg-secondary-dark: #181A1F;
+
+  --nm-bg-elevated-light: #E7D4A8;
+  --nm-bg-elevated-dark: #20232A;
+
+  --nm-bg-card-light: rgba(251, 243, 224, 0.88);
+  --nm-bg-card-dark: rgba(24, 26, 31, 0.92);
+
+  --nm-text-main-light: #2B1D12;
+  --nm-text-main-dark: #EFECE6;
+
+  --nm-text-muted-light: #5C4330;
+  --nm-text-muted-dark: #A39E93;
+
+  --nm-text-subtle-light: #7B5E45;
+  --nm-text-subtle-dark: #757067;
+
+  --nm-gold-light: #8C6810;
+  --nm-gold-dark: #D4AF37;
+
+  --nm-gold-soft-light: rgba(140, 104, 16, 0.16);
+  --nm-gold-soft-dark: rgba(212, 175, 55, 0.14);
+
+  --nm-crimson-light: #8B1E24;
+  --nm-crimson-dark: #8B1E24;
+
+  --nm-crimson-bright-light: #8B1E24;
+  --nm-crimson-bright-dark: #C8373F;
+
+  --nm-crimson-soft-light: rgba(139, 30, 36, 0.13);
+  --nm-crimson-soft-dark: rgba(139, 30, 36, 0.28);
+
+  --nm-border-light: rgba(92, 67, 48, 0.24);
+  --nm-border-dark: rgba(212, 175, 55, 0.2);
+
+  --nm-scrollbar-track-light: #E7D4A8;
+  --nm-scrollbar-track-dark: #181A1F;
+  --nm-scrollbar-thumb-light: #8A6B4A;
+  --nm-scrollbar-thumb-dark: #6D6656;
+
+  /* Default fallback tokens (Monástico Dark by default) */
+  --nm-bg-primary: var(--nm-bg-primary-dark);
+  --nm-bg-secondary: var(--nm-bg-secondary-dark);
+  --nm-bg-elevated: var(--nm-bg-elevated-dark);
+  --nm-bg-card: var(--nm-bg-card-dark);
+  --nm-text-main: var(--nm-text-main-dark);
+  --nm-text-muted: var(--nm-text-muted-dark);
+  --nm-text-subtle: var(--nm-text-subtle-dark);
+  --nm-gold: var(--nm-gold-dark);
+  --nm-gold-soft: var(--nm-gold-soft-dark);
+  --nm-crimson: var(--nm-crimson-dark);
+  --nm-crimson-bright: var(--nm-crimson-bright-dark);
+  --nm-crimson-soft: var(--nm-crimson-soft-dark);
+  --nm-border: var(--nm-border-dark);
+  --nm-scrollbar-track: var(--nm-scrollbar-track-dark);
+  --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-dark);
+
+  /* MANDATORY: Apply color-scheme to :root for viewport-wide theming */
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: light) {
+    --nm-bg-primary: var(--nm-bg-primary-light);
+    --nm-bg-secondary: var(--nm-bg-secondary-light);
+    --nm-bg-elevated: var(--nm-bg-elevated-light);
+    --nm-bg-card: var(--nm-bg-card-light);
+    --nm-text-main: var(--nm-text-main-light);
+    --nm-text-muted: var(--nm-text-muted-light);
+    --nm-text-subtle: var(--nm-text-subtle-light);
+    --nm-gold: var(--nm-gold-light);
+    --nm-gold-soft: var(--nm-gold-soft-light);
+    --nm-crimson: var(--nm-crimson-light);
+    --nm-crimson-bright: var(--nm-crimson-bright-light);
+    --nm-crimson-soft: var(--nm-crimson-soft-light);
+    --nm-border: var(--nm-border-light);
+    --nm-scrollbar-track: var(--nm-scrollbar-track-light);
+    --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-light);
+  }
+
+  @supports (color: light-dark(white, black)) {
+    --nm-bg-primary: light-dark(var(--nm-bg-primary-light), var(--nm-bg-primary-dark));
+    --nm-bg-secondary: light-dark(var(--nm-bg-secondary-light), var(--nm-bg-secondary-dark));
+    --nm-bg-elevated: light-dark(var(--nm-bg-elevated-light), var(--nm-bg-elevated-dark));
+    --nm-bg-card: light-dark(var(--nm-bg-card-light), var(--nm-bg-card-dark));
+    --nm-text-main: light-dark(var(--nm-text-main-light), var(--nm-text-main-dark));
+    --nm-text-muted: light-dark(var(--nm-text-muted-light), var(--nm-text-muted-dark));
+    --nm-text-subtle: light-dark(var(--nm-text-subtle-light), var(--nm-text-subtle-dark));
+    --nm-gold: light-dark(var(--nm-gold-light), var(--nm-gold-dark));
+    --nm-gold-soft: light-dark(var(--nm-gold-soft-light), var(--nm-gold-soft-dark));
+    --nm-crimson: light-dark(var(--nm-crimson-light), var(--nm-crimson-dark));
+    --nm-crimson-bright: light-dark(var(--nm-crimson-bright-light), var(--nm-crimson-bright-dark));
+    --nm-crimson-soft: light-dark(var(--nm-crimson-soft-light), var(--nm-crimson-soft-dark));
+    --nm-border: light-dark(var(--nm-border-light), var(--nm-border-dark));
+    --nm-scrollbar-track: light-dark(var(--nm-scrollbar-track-light), var(--nm-scrollbar-track-dark));
+    --nm-scrollbar-thumb: light-dark(var(--nm-scrollbar-thumb-light), var(--nm-scrollbar-thumb-dark));
+  }
+
+  accent-color: var(--nm-gold);
+  /* Pair scrollbar-color with scrollbar-width so macOS renders themed scrollbars; never animate scrollbar-color */
+  scrollbar-width: thin;
+  scrollbar-color: var(--nm-scrollbar-thumb) var(--nm-scrollbar-track);
+}
+
+:root[data-theme="parchment"] {
+  --nm-bg-primary: var(--nm-bg-primary-light);
+  --nm-bg-secondary: var(--nm-bg-secondary-light);
+  --nm-bg-elevated: var(--nm-bg-elevated-light);
+  --nm-bg-card: var(--nm-bg-card-light);
+  --nm-text-main: var(--nm-text-main-light);
+  --nm-text-muted: var(--nm-text-muted-light);
+  --nm-text-subtle: var(--nm-text-subtle-light);
+  --nm-gold: var(--nm-gold-light);
+  --nm-gold-soft: var(--nm-gold-soft-light);
+  --nm-crimson: var(--nm-crimson-light);
+  --nm-crimson-bright: var(--nm-crimson-bright-light);
+  --nm-crimson-soft: var(--nm-crimson-soft-light);
+  --nm-border: var(--nm-border-light);
+  --nm-scrollbar-track: var(--nm-scrollbar-track-light);
+  --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-light);
+}
+
+:root[data-theme="monastic-dark"] {
+  --nm-bg-primary: var(--nm-bg-primary-dark);
+  --nm-bg-secondary: var(--nm-bg-secondary-dark);
+  --nm-bg-elevated: var(--nm-bg-elevated-dark);
+  --nm-bg-card: var(--nm-bg-card-dark);
+  --nm-text-main: var(--nm-text-main-dark);
+  --nm-text-muted: var(--nm-text-muted-dark);
+  --nm-text-subtle: var(--nm-text-subtle-dark);
+  --nm-gold: var(--nm-gold-dark);
+  --nm-gold-soft: var(--nm-gold-soft-dark);
+  --nm-crimson: var(--nm-crimson-dark);
+  --nm-crimson-bright: var(--nm-crimson-bright-dark);
+  --nm-crimson-soft: var(--nm-crimson-soft-dark);
+  --nm-border: var(--nm-border-dark);
+  --nm-scrollbar-track: var(--nm-scrollbar-track-dark);
+  --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-dark);
+}
+
+/* Legacy fallback for WebKit/Blink browsers without scrollbar-color support */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--nm-scrollbar-thumb);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--nm-scrollbar-track);
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--nm-bg-primary);
+  color: var(--nm-text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-liturgical {
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Visually hidden utility that becomes visible when focused (e.g., Skip link) */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* High contrast focus indicators with outline-offset */
+:where(a:any-link, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--nm-gold);
+  outline-offset: 2px;
+}
+
+/* Accessible Tabs styling per Modern Web Guidance (tabs) */
+[role="tab"] {
+  position: relative;
+  flex: none;
+}
+
+[role="tab"][aria-selected="true"] {
+  color: var(--nm-gold);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    border-block-end: 3px solid var(--nm-gold);
+  }
+}
+
+/* Brand-Consistent Range Slider per Modern Web Guidance (slider) */
+input[type="range"] {
+  --slider-track-size: 0.45rem;
+  --slider-thumb-size: 1.1rem;
+  --slider-track-radius: 999px;
+  --slider-thumb-radius: 50%;
+  --slider-track-color: var(--nm-bg-elevated);
+  --slider-fill-color: var(--nm-gold);
+  --slider-thumb-color: var(--slider-fill-color);
+  --slider-direction: to right;
+
+  &:dir(rtl) {
+    --slider-direction: to left;
+  }
+
+  --attr-min: attr(min type(<number>), 0);
+  --attr-max: attr(max type(<number>), 100);
+  --control-value: attr(value type(<number>), 50);
+  --slider-progress: calc(
+    progress(var(--control-value), var(--attr-min), var(--attr-max)) * 100%
+  );
+
+  appearance: none;
+  inline-size: 100%;
+  block-size: 2rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@supports not (opacity: progress(1, 0, 100)) {
+  input[type="range"] {
+    --slider-progress: calc(
+      (var(--control-value) - var(--attr-min)) /
+      (var(--attr-max) - var(--attr-min)) * 100%
+    );
+  }
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: linear-gradient(
+    var(--slider-direction),
+    var(--slider-fill-color) var(--slider-progress),
+    var(--slider-track-color) var(--slider-progress)
+  );
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  margin-block-start: calc(
+    (var(--slider-track-size) - var(--slider-thumb-size)) / 2
+  );
+  border: 0;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+}
+
+input[type="range"]::-moz-range-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-track-color);
+}
+
+input[type="range"]::-moz-range-progress {
+  block-size: var(--slider-track-size);
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-fill-color);
+}
+
+input[type="range"]::-moz-range-thumb {
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  border: 0;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+}
+
+input[type="range"]:focus-visible {
+  outline: 2px solid var(--slider-fill-color);
+  outline-offset: 4px;
+}
+
+/* Responsive Data Table per Modern Web Guidance (responsive-table) */
+.table-wrapper {
+  overflow: auto;
+  max-inline-size: 100%;
+  max-block-size: min(460px, 75vh);
+  container-type: inline-size;
+}
+
+.table-wrapper table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-wrapper thead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background: var(--nm-bg-elevated);
+}
+
+.table-wrapper tbody th {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+  background: var(--nm-bg-secondary);
+}
+
+@container (width < 600px) {
+  .table-wrapper table,
+  .table-wrapper thead,
+  .table-wrapper tbody,
+  .table-wrapper tr,
+  .table-wrapper th,
+  .table-wrapper td {
+    display: block;
+  }
+
+  .table-wrapper thead {
+    display: none;
+  }
+
+  .table-wrapper tr {
+    margin-block-end: 1rem;
+    border: 1px solid var(--nm-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .table-wrapper tbody th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 2;
+    background: var(--nm-bg-elevated);
+  }
+
+  .table-wrapper table {
+    --label-2: "Rol Prosódico";
+    --label-3: "Acorde Modal";
+    --label-4: "Voces (S·A·T·B)";
+    --label-5: "Función y Justificación Académica";
+  }
+
+  .table-wrapper td:nth-child(2)::before {
+    content: var(--label-2) ": ";
+    font-weight: 700;
+  }
+  .table-wrapper td:nth-child(3)::before {
+    content: var(--label-3) ": ";
+    font-weight: 700;
+  }
+  .table-wrapper td:nth-child(4)::before {
+    content: var(--label-4) ": ";
+    font-weight: 700;
+  }
+  .table-wrapper td:nth-child(5)::before {
+    content: var(--label-5) ": ";
+    font-weight: 700;
+  }
+}
+
+/* Subtle manuscript texture for Parchment mode */
+:root[data-theme="parchment"] body {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(139, 30, 36, 0.03), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(140, 104, 16, 0.06), transparent 50%);
+}
+
+:root[data-theme="monastic-dark"] body {
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.045), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(139, 30, 36, 0.07), transparent 45%);
+}

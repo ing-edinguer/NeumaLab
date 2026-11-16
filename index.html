@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es" data-theme="monastic-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- MANDATORY: Declare support for both light and dark themes -->
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      try {
+        const storedScheme = localStorage.getItem("color-scheme");
+        const storedTheme = localStorage.getItem("neumalab-theme") || "monastic-dark";
+        const meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) {
+          meta.content = storedScheme ?? (storedTheme === "parchment" ? "light" : "dark");
+        }
+        document.documentElement.dataset.theme = storedTheme;
+      } catch (_) {}
+    </script>
+    <title>Estudio de Órgano y Procesador Latino | NeumaLab — Portal de Canto Gregoriano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
