@@ -2,6 +2,8 @@
 
 **Portal Interactivo de Canto Gregoriano, Filología Latina Litúrgica, Semiología y Acompañamiento al Órgano.**
 
+**Sitio en vivo:** [https://ing-edinguer.github.io/NeumaLab/](https://ing-edinguer.github.io/NeumaLab/)
+
 NeumaLab es una aplicación web **100% client-side** construida con React, TypeScript, Vite y Tailwind CSS, optimizada para desplegarse directamente como sitio estático en GitHub Pages.
 
 ---
