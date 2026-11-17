@@ -147,7 +147,7 @@ describe('Procesador Automático de Latín Litúrgico', () => {
   });
 
   describe('4. Fase 2: Motor GABC Bidireccional y Entrada Rápida (Solfeo / Cifrado)', () => {
-    it('parsea íntegra la Pieza 1 Salve Regina (Simplex) de Editio Vaticana con sus neumas, quilismas y bemoles', () => {
+    it('parsea íntegra la Pieza 1 Salve Regina (Simplex) de Editio Vaticana con sus neumas y quilismas', () => {
       const salve = VATICANA_REPERTOIRE[0];
       const doc = parseGabcDocument(salve.gabc);
 
@@ -155,22 +155,23 @@ describe('Procesador Automático de Latín Litúrgico', () => {
       assert.equal(doc.mode, 5);
       assert.ok(doc.syllables.length > 50);
 
-      // SAl(f)ve,(h) Re(j)gí(k)na,(j.) *(,)
+      // (c4) SAl(c)ve(e) Re(g')gí(h)na,(g.) *()
       assert.equal(doc.syllables[0].cleanText, 'Sal');
-      assert.equal(formatSyllableFastInput(doc.syllables[0], doc.clef, 'solfeo'), 'Fa');
-      assert.equal(formatSyllableFastInput(doc.syllables[1], doc.clef, 'solfeo'), 'La');
-      assert.equal(formatSyllableFastInput(doc.syllables[4], doc.clef, 'solfeo'), 'Do. ,');
+      assert.equal(formatSyllableFastInput(doc.syllables[0], doc.clef, 'solfeo'), 'Do');
+      assert.equal(formatSyllableFastInput(doc.syllables[1], doc.clef, 'solfeo'), 'Mi');
+      assert.equal(formatSyllableFastInput(doc.syllables[2], doc.clef, 'solfeo'), "'Sol");
+      assert.equal(doc.syllables[4].choralSign, '*');
 
-      // mi(j)se(ixi)ri(h)cór(g)di(h)æ :(g.) (;) -> 'se(ixi)' debe ser 'Sib' en c4
-      const seSyl = doc.syllables.find((s) => s.cleanText === 'se' && s.notes[0]?.flat);
-      assert.ok(seSyl);
-      assert.equal(formatSyllableFastInput(seSyl!, doc.clef, 'solfeo'), 'Sib');
-      assert.equal(formatSyllableFastInput(seSyl!, doc.clef, 'cifrado'), 'Bb');
+      // Última sílaba sobre finalis Do: Ma(e)rí(dc)a.(c.) (::)
+      const lastSyl = doc.syllables[doc.syllables.length - 1];
+      assert.equal(lastSyl.cleanText, 'a');
+      assert.equal(formatSyllableFastInput(lastSyl, doc.clef, 'solfeo'), 'Do. ||');
 
-      // O(h!iwj) -> Quilisma-Pes (Scandicus)
+      // O(e!fwg) -> Quilisma-Pes (Scandicus) sin notas falsas
       const oQuil = doc.syllables.find((s) => s.notes.some((n) => n.quilisma));
       assert.ok(oQuil);
       assert.equal(oQuil!.neumeName, 'Quilisma-Pes (Scandicus)');
+      assert.equal(oQuil!.notes.length, 3);
     });
 
     it('interpreta la sintaxis de Entrada Rápida ([Re-Fa], [Re.], [Re_], [\'Re], , ; : ||)', () => {
@@ -188,7 +189,7 @@ describe('Procesador Automático de Latín Litúrgico', () => {
       assert.equal(finalisBar.barAfter, 'finalis');
     });
 
-    it('carga y serializa las 5 piezas oficiales de Editio Vaticana sin errores', () => {
+    it('carga y serializa las 5 piezas oficiales de Editio Vaticana sin errores ni etiquetas GregoBase corruptas', () => {
       assert.equal(VATICANA_REPERTOIRE.length, 5);
       const expectedPieces = [
         { name: 'Salve Regina (Simplex)', mode: 5, clef: 'c4' },
@@ -209,17 +210,38 @@ describe('Procesador Automático de Latín Litúrgico', () => {
         assert.ok(reserialized.includes(`(${piece.clef})`));
       }
 
-      // Verificar versículos V/. en Pieza 4 (Ubi caritas)
+      // Verificar que [alt:...] y [ll:1] no inyecten notas espurias en Pieza 2 (Veni Creator)
+      const veni = parseGabcDocument(VATICANA_REPERTOIRE[1].gabc);
+      assert.equal(veni.syllables[0].cleanText, 'Ve');
+      assert.equal(veni.syllables[0].notes.length, 1); // e[alt:Hic genuflectitur.] -> 1 sola nota
+      assert.equal(veni.syllables[2].cleanText, 'Cre');
+      assert.equal(veni.syllables[2].notes.length, 2); // e[ll:1]d -> 2 notas (Sol-Fa Clivis)
+
+      // Verificar versículos V/. y Si bemol (ixi -> Sib / Bb) en Pieza 4 (Ubi caritas)
       const ubiCaritas = parseGabcDocument(VATICANA_REPERTOIRE[3].gabc);
       const versicleSyls = ubiCaritas.syllables.filter((s) => s.versiclePrefix === 'V/.');
       assert.equal(versicleSyls.length, 4);
       assert.equal(versicleSyls[0].cleanText, 'Con');
+      const etSyl = ubiCaritas.syllables.find((s) => s.cleanText === 'et' && s.notes[0]?.flat);
+      assert.ok(etSyl);
+      assert.equal(formatSyllableFastInput(etSyl!, ubiCaritas.clef, 'solfeo'), 'Sib');
+      assert.equal(formatSyllableFastInput(etSyl!, ubiCaritas.clef, 'cifrado'), 'Bb');
 
-      // Verificar ictus rítmico en Pieza 5 (Regina Caeli): læ(ixi)tá(h)re,(g')
+      // Verificar ictus + episema [oh:h] y <nlba>/{ia} en Pieza 5 (Regina Caeli)
       const reginaCaeli = parseGabcDocument(VATICANA_REPERTOIRE[4].gabc);
       const reSyl = reginaCaeli.syllables.find((s) => s.cleanText === 're' && s.notes[0]?.ictus);
       assert.ok(reSyl);
-      assert.equal(formatSyllableFastInput(reSyl!, reginaCaeli.clef, 'solfeo'), "'Sol");
+      assert.equal(formatSyllableFastInput(reSyl!, reginaCaeli.clef, 'solfeo'), "'Sol_");
+      assert.ok(!reginaCaeli.syllables.some((s) => /nlba|[{}]/i.test(s.rawText)));
+      const lastAlleluiaIa = reginaCaeli.syllables[reginaCaeli.syllables.length - 1];
+      assert.equal(lastAlleluiaIa.cleanText, 'ia');
+      assert.equal(formatSyllableFastInput(lastAlleluiaIa, reginaCaeli.clef, 'solfeo'), 'Fa. ||');
+
+      // Verificar soporte GregoBase <sp>V/</sp>. en parser
+      const gregobaseSpDoc = parseGabcDocument(
+        'name: Test;\n%%\n(c4) U(f)bi(f) est.(g.) (::) <sp>V/</sp>. Con(f)gre(f)gá(gh)vit.(hg) (::)'
+      );
+      assert.equal(gregobaseSpDoc.syllables.filter((s) => s.versiclePrefix === 'V/.').length, 1);
     });
   });
 

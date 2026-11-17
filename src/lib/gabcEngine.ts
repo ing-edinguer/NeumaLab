@@ -321,7 +321,9 @@ export function parseGabcNeumeString(gabcInside: string): {
   barType: BarType;
   clefChange?: ClefType;
 } {
-  const trimmed = gabcInside.trim();
+  const trimmed = gabcInside
+    .replace(/\[[^\]]*\]/g, '')
+    .trim();
 
   // Comprobar si es cambio de clave: c3, c4, f3, f4
   if (/^(c3|c4|f3|f4)$/i.test(trimmed)) {
@@ -332,8 +334,13 @@ export function parseGabcNeumeString(gabcInside: string): {
     };
   }
 
-  // Comprobar si es barra divisoria pura: (,), (;), (:), (::)
-  if (trimmed === ',') return { notes: [], barType: 'minima' };
+  // Ignorar marcas de salto de línea/página de GregoBase: (z), (Z), (Z-)
+  if (/^(z|Z-?)$/.test(trimmed)) {
+    return { notes: [], barType: 'none' };
+  }
+
+  // Comprobar si es barra divisoria pura: (,), (`), (;), (:), (::)
+  if (trimmed === ',' || trimmed === '`') return { notes: [], barType: 'minima' };
   if (trimmed === ';' || trimmed.startsWith(';')) return { notes: [], barType: 'maior' };
   if (trimmed === ':') return { notes: [], barType: 'maxima' };
   if (trimmed === '::') return { notes: [], barType: 'finalis' };
@@ -653,8 +660,18 @@ export function parseGabcDocument(gabcSource: string): ChantDocument {
     }
   }
 
-  // Normalizar saltos de línea en el cuerpo GABC
-  const normalizedBody = bodyPart.replace(/\s+/g, ' ').trim();
+  // Normalizar etiquetas GregoBase/GregorioTeX y saltos de línea en el cuerpo GABC
+  const normalizedBody = bodyPart
+    .replace(/<sp>\s*([VR]\/)\s*<\/sp>\.?/gi, (_, vr: string) => `${vr.toUpperCase()}.`)
+    .replace(/<\/?(?:nlba|e|b|i|sc|c)>/gi, '')
+    .replace(/\[alt:[^\]]*\]/gi, '')
+    .replace(/[{}]/g, '')
+    .replace(
+      /([a-zA-ZÁÉÍÓÚÝáéíóúýÀÈÌÒÙàèìòùÄËÏÖÜäëïöüÆŒæœǽǼ])\s+([:;.,?!]+\([^)]*\))/g,
+      '$1$2'
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
   const wordChunks = normalizedBody.split(' ').filter(Boolean);
 
   interface TempSyl {
@@ -739,8 +756,8 @@ export function parseGabcDocument(gabcSource: string): ChantDocument {
         if (lastS) {
           lastS.notes.push(...parsed.notes);
         }
-        continue;
       }
+      continue;
     }
 
     // Es una palabra con 1 o más sílabas: ej. "Re(j)gí(k)na,(j.)"

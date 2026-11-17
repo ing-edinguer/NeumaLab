@@ -38,31 +38,31 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
   {
     pieceId: 'salve-regina-simplex',
     title: '1. Salve Regina (Tonus Simplex)',
-    subtitle: 'Antífona Mariana del Tiempo Ordinario · Liber Usualis p. 279 / Jubilate Deo',
-    modeTag: 'Modo V · Clave c4 · Finalis Fa',
+    subtitle: 'Antífona Mariana del Tiempo Ordinario · Liber Usualis (1961) p. 279',
+    modeTag: 'Modo V Transpuesto · Clave c4 · Finalis Do',
     section1LiturgicalBiblical:
       'Compuesta en el siglo XI (atribuida tradicionalmente a Hermann Contractus de Reichenau o Ademar de Monteil). Su texto entrelaza títulos cristológicos eclesiales de raíz patrística y mariana («Vita, dulcedo et spes nostra», Eco de Sal 27 y Jn 14,6; «exsules filii Hevae», Gn 3; «in hac lacrimarum valle», Sal 83,7). Es la antífona final de Completas desde la fiesta de la Santísima Trinidad hasta el sábado anterior al I Domingo de Adviento.',
     section2TextTranslationProsody: {
       latinExcerpt:
-        'Salve, Regína, * mater misericórdiæ : vita, dulcédo, et spes nostra, salve. (...) O clemens : O pia : O dulcis * Virgo María.',
+        'Salve Regína, * Mater misericórdiae : Vita, dulcédo, et spes nostra, salve. (...) O clemens, O pia, O dulcis Virgo María.',
       translation:
-        'Dios te salve, Reina y Madre de misericordia; vida, dulzura y esperanza nuestra, Dios te salve... ¡Oh clemente! ¡Oh piadosa! ¡Oh dulce Virgen María!',
+        'Dios te salve, Reina y Madre de misericordia; vida, dulzura y esperanza nuestra, Dios te salve... ¡Oh clemente, oh piadosa, oh dulce Virgen María!',
       prosodyAnalysis:
         'Alterna elegantemente cadencias espondaicas solemnes («Re-gí-na ´ _», «dul-cé-do ´ _», «con-vér-te ´ _») con largos dáctilos expresivos en el centro de los incisos («mi-se-ri-cór-di-ae ´ _ _ _», «ó-cu-los ´ _ _», «ex-sí-li-um ´ _ _»). En las tres exclamaciones finales destaca el dáctilo compuesto «O clé-mens» y la cadencia llana mariana «Ma-rí-a».',
     },
     section3ModalHexachordal:
-      'Pertenece al Modo V (Tritus Auténtico, Finalis Fa, Tenor Do5, ámbito Mi4–Re5). Arranca con el arpegio solar Fa–La–Do5–Re5–Do5 (Hexachordum Naturale), pero inmediatamente desciende introduciendo sistemáticamente el Si bemol («mi-se-ri-cór-di-ae») mediante el Hexachordum Molle para eliminar el tritono Fa–Si y suavizar la súplica. El inciso «ad nos convérte» alcanza el grave Do4 (cuerda sub-finalis), creando el arco expresivo más profundo de la antífona.',
+      'Modo V (Tritus Auténtico) notado en la Editio Vaticana transpuesto una cuarta justa abajo sobre Finalis Do (clave c4, Tenor Sol4, ámbito Do4–Do5). Arranca con la tríada luminosa Do–Mi–Sol–La–Sol («Salve Regína»), desciende a Re4 en «dulcédo» y concluye reiteradamente sobre Do4 sin necesitar jamás el Si bemol, alternando los hexacordos Naturale (Do–La) y Durum (con Si♮ en «clamámus» y «exsíli-um»).',
     section4SemiologyNeumes:
-      'Predomina la escritura silábica clara propia del Tonus Simplex (restituida en el s. XVII–XIX sobre el tronco medieval de la versión solemne). Sobresalen los dos Quilisma-Pes ascendentes al final de la obra: «O(h!iwj) clemens» (sobre La–Si♭–Do) y «O(j!kwl) pia» (sobre Do5–Re5–Mi5). Según Cardine, la nota anterior al quilisma («h» y «j») debe alargarse con cálida retención antes de cruzar con ligereza la nota dentada hacia la cumbre.',
+      'Predomina la escritura silábica clara propia del Tonus Simplex (restituida en el s. XVII–XIX). Sobresalen las tres aclamaciones finales con sus figuras auténticas del Liber Usualis p. 279: el Quilisma-Pes «O(e!fwg) cle(ee)mens» (Mi–Fa–Sol → Mi–Do), el amplio melisma «O(g!hwi/ji) pi(hg)a» (hasta Do5) y el Climacus descendente «O(jjj//ghf\'fd) dul(ef)cis» antes del reposo «Vir(c)go(f\') Ma(e)rí(dc)a.(c.)».',
     section5ChironomyBreathing:
-      'Incisos muy definidos separados por barras Minima (,), Maior (;) y Maxima (::). Se debe cantar con respiración colectiva discreta en las barras mayores después de «salve», «Evae», «valle» y «convérte», evitando cortar después de «Advocáta nostra» sin sostener el aliento hacia «illos tuos». Las tres exclamaciones «O clemens : O pia : O dulcis» describen un crescendo quironímico en oleaje ársico antes de la Tesis pacífica en «Virgo María».',
+      'Incisos muy definidos separados por barras Minima (,), Maior (;) y Maxima (::). Se debe cantar con respiración colectiva discreta en las barras mayores después de «salve», «Evae», «valle» y «convérte», evitando cortar después de «Advocáta nostra» sin sostener el aliento hacia «illos tuos». Las tres exclamaciones «O clemens, O pia, O dulcis» describen un crescendo quironímico en oleaje ársico antes de la Tesis pacífica en «Virgo María».',
     section6OrganistGuide:
-      'Acompañar con Bourdon 8\' y Salicional 8\' (Subbajo 16\' discreto en las invocaciones finales). Colocar el acorde de Fa Mayor en estado fundamental en «Salve» y «Regí-na,» (Mora); reservar Si♭ Mayor y Sol menor⁶ para el «se(ixi)» de «misericórdiae», «clamámus» y «lacrimárum». En «O clemens» y «O pia», sostener un único acorde transparente (Fa o Do) debajo de todo el quilisma para no entorpecer su vibración vocal.',
+      'Acompañar con Bourdon 8\' y Salicional 8\' (Subbajo 16\' discreto en las invocaciones finales). Colocar el acorde de Do Mayor en estado fundamental en «Salve», «salve.(c.)», «valle.(c.)» y «María.(c.)»; usar Sol Mayor, Mi menor, La menor, Re menor y Fa Mayor (sin Fa♯ ni Sol♯). En «O(e!fwg) clemens» y «O(g!hwi/ji) pia», sostener un único acorde transparente (Do o Sol) debajo del quilisma para no entorpecer su vibración vocal.',
   },
   {
     pieceId: 'veni-creator-spiritus',
     title: '2. Veni Creator Spiritus',
-    subtitle: 'Himno de Pentecostés (Vísperas, Tercia y Ordenaciones) · Liber Usualis p. 885',
+    subtitle: 'Modo VIII · Graduale Romanum p. 150* / Liber Usualis p. 885',
     modeTag: 'Modo VIII · Clave c3 · Finalis Sol',
     section1LiturgicalBiblical:
       'Himno del siglo IX atribuido a Rábano Mauro, Abad de Fulda. Inspirado en la teología neotestamentaria del Espíritu Santo (Jn 14–16; Rm 5,5 «caritas Dei diffusa est»; Hch 2). Es uno de los himnos de mayor rango en la liturgia católica: se canta al inicio de Concilios, Sínodos, Ordenaciones Sacerdotales y Episcopales y en las Vísperas de Pentecostés.',
@@ -75,9 +75,9 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
         'Construido en dímetros yámbicos acentuales de 8 sílabas (estrofa ambrosiana de 4 versos). Cada verso concluye invariablemente en palabra proparoxítona o Dactílica (`´ _ _`): «Spí-ri-tus», «ví-si-ta», «grá-ti-a», «péc-to-ra», produciendo una cadencia poética alada y ascendente.',
     },
     section3ModalHexachordal:
-      'Modo VIII (Tetrardus Plagal: Finalis Sol, Tenor Do5, escrito en Clave de Do en 3ª línea `c3` donde la 3ª línea es Do y la 1ª es Sol/La). El 1er verso gravita sobre la cuarta Sol–Do (cuerda madre Do arcaica); el 3er verso alcanza el agudo Re5–Do5 y el 4º regresa suavemente al Sol finalis. Emplea el Hexachordum Naturale y el Durum (con Si natural en el Tenor–Subtenora, jamás Si♭).',
+      'Modo VIII (Tetrardus Plagal: Finalis Sol, Tenor Do5, escrito en Clave de Do en 3ª línea `c3` donde la 3ª línea `h` es Do5 y `e` es Sol4). El 1er verso gravita sobre la cuarta Sol–Do (cuerda madre Do arcaica); el 3er verso concluye ascendentemente en Do5 («grá(e\')ti(f)a(h.)») y el 4º regresa suavemente al Sol finalis con «cre(ed)á(f)sti(fgf) pé(e\')cto(d)ra.(e.)». Emplea Si natural del Hexachordum Durum (jamás Si♭).',
     section4SemiologyNeumes:
-      'Arquitectura simétrica de Clivis y Podatus silábicos-neumáticos. En «Cre(ed)á(e)tor(fe)» aparecen dos Clivis consecutivas que equilibran el acento en «á». En el «A(efe)men.(de..)» final destaca el Torculus expresivo (Sol–La–Sol) resuelto en una Clivis con doble punctum mora (Fa–Sol..), exigiendo un rallentando orgánico solemne.',
+      'Arquitectura simétrica de Clivis y Podatus silábicos-neumáticos. En «Cre(ed)á(e)tor(fe)» aparecen dos Clivis consecutivas que equilibran el acento en «á». En el 4º verso destaca el Torculus «(fgf)» sobre «creásti», y en el «A(efe)men.(de..)» final aparece un Torculus expresivo (Sol–La–Sol) resuelto en un Podatus con doble punctum mora (Fa–Sol..), exigiendo un rallentando orgánico solemne.',
     section5ChironomyBreathing:
       'Cada verso de 8 sílabas constituye una gran onda binaria-ternaria indivisible: Arsis en las 4 primeras sílabas y Tesis apacible desde la penúltima sílaba hasta el reposo de la barra (; o :). Respirar brevemente al final de los versos 1 y 3, y tomar respiración plena en la barra maxima (:) tras el 2º verso.',
     section6OrganistGuide:
@@ -86,7 +86,7 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
   {
     pieceId: 'adoro-te-devote',
     title: '3. Adoro te devote',
-    subtitle: 'Himno Eucarístico de Santo Tomás de Aquino · Liber Usualis p. 1855',
+    subtitle: 'Himno Eucarístico de Santo Tomás de Aquino · Cantus selecti p. 11* / LU p. 1855',
     modeTag: 'Modo V Transpuesto sobre Do · Clave c4',
     section1LiturgicalBiblical:
       'Plegaria eucarística escrita hacia 1264 por Santo Tomás de Aquino a petición del Papa Urbano IV tras la institución de la fiesta del Corpus Christi (bula Transiturus). Recoge la teología bíblica de la fe frente al misterio sacramental (Jn 6,51; Lc 23,42 «Memento mei»; 2 Co 5,7 «per fidem ambulamus et non per speciem»).',
@@ -99,9 +99,9 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
         'Cuartetos de versos de 11 sílabas (rítmica medieval troqueo-dactílica). Nótese la alternancia constante entre cesuras espondaicas centrales («de-vó-te ´ _», «fi-gú-ris ´ _», «con-tém-plans ´ _») y finales de verso estrictamente dactílicos («Dé-i-tas ´ _ _», «lá-ti-tas ´ _ _», «súb-ji-cit ´ _ _», «dé-fi-cit ´ _ _»).',
     },
     section3ModalHexachordal:
-      'Modo V (Tritus Auténtico) transportado una quinta justa arriba sobre Finalis Do (escrito en clave `c4`, usando las posiciones equivalentes a Do Mayor pura sin alteraciones). Ámbito exacto de octava Do4–Do5 (`c`–`j`). Todo el himno discurre en el Hexachordum Naturale puro (Do–La) extendido al Si–Do superior (Hexachordum Durum) sin necesitar jamás el Si bemol.',
+      'Modo V (Tritus Auténtico) transportado sobre Finalis Do en clave `c4` (Cantus selecti p. 11*, equivalente interválico al `cb3` del Liber Usualis p. 1855). Ámbito exacto de octava Do4–Do5 (`c`–`j`). Todo el himno discurre en el Hexachordum Naturale puro (Do–La) extendido al Si–Do superior (Hexachordum Durum) sin necesitar jamás el Si bemol.',
     section4SemiologyNeumes:
-      'Melodía de estilo gallicano-parisino tardomedieval (c. XIII–XIV), casi silábica y meditativa. Los únicos adornos son los Podatus expresivos (Mi–Fa en Do transpuesto, o Sol–La en c4: `gh`) colocados justo antes del acento del 1º y 3º hemistiquio («de(gh)vó-te», «fi(gh)gú-ris»), y la Clivis descendente (`ji` en «me(ji)um» y `dc` en «con-tém(dc)plans») que prepara las cadencias interiores.',
+      'Melodía contemplativa de estilo gallicano-parisino. Los Podatus `(gh)` (Sol–La) recaen exactamente sobre los acentos de cesura («de(g)vó(gh)te,(g.)», «fi(g)gú(gh)ris(g.)»), mientras el 3er verso escala mediante el Podatus `(hi)` en «Ti(g\')bi(g) se(hi) cor(j)» hacia la Clivis `me(ji)um(g.)`. Nótese el descenso paralelo en las cadencias de semiverso «Dé(d\')i(c)tas,(c.)», «lá(d\')ti(c)tas :(c.)» y «dé(d\')fi(c)cit.(c.)».',
     section5ChironomyBreathing:
       'Cada verso se divide en dos semiversos equilibrados por la barra minima (,). El 3er verso («Tibi se cor meum») alcanza la cumbre emocional en la octava alta (`j` = Do5): dirigir con un amplio arco ársico ascendente, sin golpear el «cor», dejando descender suavemente el «totum súbjicit» en Tesis.',
     section6OrganistGuide:
@@ -110,7 +110,7 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
   {
     pieceId: 'ubi-caritas-et-amor',
     title: '4. Ubi caritas et amor',
-    subtitle: 'Antífona del Mandato (Lavatorio de Pies, Jueves Santo) · Graduale Romanum',
+    subtitle: 'Antífona del Mandato (Jueves Santo) · Graduale Romanum p. 207 / LU p. 675',
     modeTag: 'Modo VI · Clave c4 · Finalis Fa (con Si♭)',
     section1LiturgicalBiblical:
       'Cantada durante el rito del Lavatorio de los Pies (Mandatum) en la Misa vespertina de la Cena del Señor (Jueves Santo), según tradición monástica documentada desde el siglo VIII–X. El texto y la estructura versicular condensan Jn 13,34 («Mandatum novum do vobis»), 1 Jn 4,7–16 («Deus caritas est») y Ef 4,3–6 («unus Dominus, una fides»).',
@@ -123,37 +123,37 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
         'El estribillo inicia con el dáctilo luminoso «cá-ri-tas ´ _ _» y concluye con la cadencia monosílaba enclítica «í-bi est» (equivalente rítmico dactílico). Todos los versículos presentan simetría paroxítona y proparoxítona: «Congregá-vit», «Exsulté-mus», «Timeá-mus», cerrando con la invocación espondaica «Chri-sti á-mor ´ _».',
     },
     section3ModalHexachordal:
-      'Modo VI (Tritus Plagal: Finalis Fa, Tenor La4, ámbito Re4–Si♭4). Es un ejemplo paradigmático de tonalidad arcaica del Tritus Plagal con Si bemol permanente (Hexachordum Molle), confiriendo al giro Sol–La–Si♭–La una suavidad fraterna e intimista. Los versículos finales descienden hasta Re4 («vi-vum», «cor-de») antes de volver a Fa.',
+      'Modo VI (Tritus Plagal: Finalis Fa, Tenor La4, ámbito Do4–Si♭4). Es un ejemplo paradigmático de tonalidad arcaica del Tritus Plagal con Si bemol permanente (Hexachordum Molle). Mientras el estribillo y los dos primeros versículos reposan abiertos en Sol («De(f)us(f) i(f)bi(g) est.(g.)»), los versículos 3 y 4 descienden brevemente hasta Do4 (`d_c`) antes de resolver pacíficamente en la Finalis Fa («vi(g)vum.(f.)», «sin(ghg)cé(fdf)ro.(f.)»).',
     section4SemiologyNeumes:
-      'Sobresale el doble gesto ornamental que envuelve la sílaba tónica de «cáritas» y los verbos principales de los versículos: Podatus (`gh`) en la tónica seguido de Clivis (`hg`) en la sílaba átona post-tónica («cá(gh)ri(hg)tas», «Con-gre-gá(gh)vit(hg)»), dibujo que los cantores deben enlazar en un único arco vocal sin acentuar la segunda sílaba.',
+      'Sobresale el giro simétrico que envuelve el acento de «cáritas» y los verbos iniciales: Podatus (`gh`) en la tónica, Clivis (`hg`) en la post-tónica y punctum en La (`h`) en «cá(gh)ri(hg)tas(h)», seguido de «et(ixi) a(hg)mor,(h_g)» con episema horizontal sobre el La de la Clivis final, que los cantores deben sostener con serenidad sin pesadez.',
     section5ChironomyBreathing:
       'Antífona alternada entre dos cantores (o schola pequeña) que cantan los versículos «V/. Congregávit...» y toda la asamblea que responde con el estribillo «Ubi cáritas et amor, Deus ibi est». El tiempo debe ser recogido y fluido (ca. 120–126 BPM por punctum), respirando con naturalidad solo en las comas e incisos mayores.',
     section6OrganistGuide:
-      'Utilizar exclusivamente Fa Mayor, Si bemol Mayor, Re menor, Sol menor y Do Mayor (con absoluta prohibición de Si natural). La nota tenida de Fa–La en las cuerdas medias apoya el clima orante sin cubrir las voces. En los versículos 3 y 4 donde la melodía baja a Re («Deum vivum.(d.)»), armonizar brevemente con Re menor antes de retornar al acorde de Fa en la entrada de la asamblea.',
+      'Utilizar exclusivamente Fa Mayor, Si bemol Mayor, Re menor, Sol menor y Do Mayor (con absoluta prohibición de Si natural). La semicadencia abierta en Sol de la antífona («est.(g.)») puede sostenerse en Sol menor⁶ o Do (sin 3ª tensa) mientras el coro responde, y en los versículos 3–4 acompañar el paso `d_c` con Do/Fa hacia el reposo definitivo en Fa Mayor sobre «vi(g)vum.(f.)» y «sin(ghg)cé(fdf)ro.(f.)».',
   },
   {
     pieceId: 'regina-caeli-simplex',
     title: '5. Regina Caeli (Tonus Simplex)',
-    subtitle: 'Antífona Mariana del Tiempo Pascual · Liber Usualis p. 278 / Jubilate Deo',
+    subtitle: 'Antífona Mariana del Tiempo Pascual · Liber Usualis (1961) p. 278',
     modeTag: 'Modo VI · Clave c4 · Finalis Fa (con Si♭)',
     section1LiturgicalBiblical:
       'Antífona pascual del siglo XII cuyo primer uso se documenta en los antifonarios de San Pedro en el Vaticano hacia 1171 (y que sustituye al Ángelus desde la Vigilia Pascual hasta Pentecostés). Proclama la alegría pascual de María por la Resurrección de Cristo (Lc 1,28; Sal 117; 1 Co 15,20).',
     section2TextTranslationProsody: {
       latinExcerpt:
-        'Regína cæli lætáre, allelúia : * Quia quem meruísti portáre, allelúia : Resurréxit, sicut dixit, allelúia : Ora pro nobis Deum, allelúia.',
+        'Regína caeli * laetáre, allelúia : Quia quem meruísti portáre, allelúia : Resurréxit, sicut dixit, allelúia : Ora pro nobis Deum, allelúia.',
       translation:
         'Reina del cielo, alégrate, aleluya; porque el que mereciste llevar en tu seno, aleluya, resucitó según dijo, aleluya; ruega por nosotros a Dios, aleluya.',
       prosodyAnalysis:
-        'Cada uno de los 4 miembros combina una sentencia espondaica («cæ-li», «lae-tá-re», «por-tá-re», «di-xit», «Dé-um») rematada por el estribillo acentual «al-le-lú-ia» (acentuado en «lú», con i consonántica suave «al-le-lú-ya»).',
+        'Cada uno de los 4 miembros combina una sentencia espondaica («cae-li», «lae-tá-re», «por-tá-re», «di-xit», «De-um») rematada por el estribillo acentual «al-le-lú-ia» (acentuado en «lú», con i consonántica suave «al-le-lú-ya»).',
     },
     section3ModalHexachordal:
-      'Modo VI (Tritus Plagal sobre Finalis Fa), pero con un breve vuelo jubiloso hacia el registro del Modo V al alcanzar Do5 y Re5 en «Re-sur-ré(k)-xit». Todo el conjunto emplea el Hexachordum Molle con Si bemol (`ixi`) en «lætáre», «meruísti», «portáre» y «nobis», manteniéndose en absoluta pureza diatónica.',
+      'Modo VI (Tritus Plagal sobre Finalis Fa), con vuelos jubilosos hasta Do5 (`j`) y Re5 (`k`) en «Qui(f)a(j\'_) quem(j) me(k\')ru(j)ísti» y «Re(j)sur(j\')ré(k)xit». Todo el conjunto emplea el Hexachordum Molle con Si bemol (`ixi`) en «laetáre», «allelúia» y «nobis», manteniéndose en absoluta pureza diatónica.',
     section4SemiologyNeumes:
-      'El primer miembro contiene la fórmula melódica «cæ(gh)li(h.) læ(ixi)tá(h)re,(g\')» donde el ictus vertical explícito en la última sílaba de «lætáre» (`g\'`) prepara la caída ágil hacia el primer «al-le-lú-ia». Observar las distintas cadencias de cada «allelúia»: la 1ª sube a Si♭–La (`ixi h`), la 2ª y 3ª descansan en Fa (`g f g f.`) y la 4ª traza el elegante descenso Fa–Re–Mi–Fa (`al(f)le(d)lú(ef)ia.(f.)`).',
+      'El primer miembro inicia «RE(f)gí(g)na(f\') cae(g)li(h.)» seguido de «lae(ixi)tá(h)re,(g\'_) al(ixi)le(h\')lú(g)ia :(f.)» donde el ictus en `g\'` impulsa el primer aleluya descendente. Observar el contraste entre los cuatro «allelúia»: los dos primeros descienden Si♭–La–Sol–Fa (`ixi h g f.`), el tercero sube luminoso Sol–La–Si♭–Do5 (`g h ixi j.`) y el cuarto cierra sobre la finalis con «al(e)le(g)lú(gg)ia.(f.)» (Mi–Sol–Sol–Fa).',
     section5ChironomyBreathing:
       'A diferencia de la Salve Regina (más contemplativa), la Regina Caeli exige un tempo pascual ágil y radiante. Dirigir cada frase con un gesto ársico limpio sobre los «allelúia», sin alargar artificialmente las notas iniciales de «Qui-a quem» ni «Re-sur-ré-xit».',
     section6OrganistGuide:
-      'Registro festivo pero transparente: Salicional 8\' + Flûte 8\' (y Principal 8\' en la asamblea dominical de Pascua). Aprovechar los acordes luminosos de Fa Mayor, Si bemol Mayor (en «lætáre» y «meruísti»), Do Mayor (en el clímax de «Resurréxit») y Re menor como enlace expresivo bajo la penúltima sílaba «le(d)» del último «allelúia».',
+      'Registro festivo pero transparente: Salicional 8\' + Flûte 8\' (y Principal 8\' en la asamblea dominical de Pascua). Aprovechar los acordes luminosos de Fa Mayor, Si bemol Mayor (en «laetáre» y los dos primeros «allelúia»), Do Mayor (en el clímax de «Resurréxit» y el tercer «allelúia.(j.)») y Do⁶ (bajo Mi `al(e)`) antes de resolver en Fa Mayor sobre «ia.(f.)».',
   },
 ];
 

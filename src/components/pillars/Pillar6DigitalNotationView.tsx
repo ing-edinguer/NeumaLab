@@ -51,10 +51,10 @@ const SAMPLE_SALVE_GABC = `name: Salve Regina (Tonus Simplex);
 office-part: Antiphona;
 mode: 5;
 annotation: Ant. V;
-transcriber: NeumaLab (Editio Vaticana);
+transcriber: Editio Vaticana (Liber Usualis p. 279);
 %%
-(c4) SAl(f)ve,(h) Re(j)gí(k)na,(j.) *(,) ma(j)ter(k) mi(j)se(ixi)ri(h)cór(g)di(h)æ :(g.) (;) vi(f)ta,(h) dul(j)cé(k)do,(j.) (,) et(j) spes(ixi) no(h)stra,(g) sal(h)ve.(f.) (::)
-O(h!iwj) cle(g)mens :(f.) (::) O(j!kwl) pi(j)a :(h.) (::) O(f) dul(gh)cis(ixi) *(,) Vir(h)go(g) Ma(h)rí(g)a.(f.) (::)`;
+(c4) SAl(c)ve(e) Re(g')gí(h)na,(g.) *() Ma(h)ter(j') mi(i)se(h')ri(g)cór(h')di(g)ae:(g.) (;) Vi(j)ta,(g') dul(h)cé(ff)do,(d.) (;) et(e) spes(f) no(g')stra,(e) sal(ed)ve.(c.) (::)
+O(e!fwg) cle(ee)mens,(c.) (::) O(g!hwi/ji) pi(hg)a,(g.) (::) O(jjj//ghf'fd) dul(ef)cis(g'_) (;) Vir(c)go(f') Ma(e)rí(dc)a.(c.) (::)`;
 
 const GREGORIOTEX_MAIN_TEX = `% !TEX program = lualatex-gregorio
 % Compilar en terminal con: lualatex --shell-escape libro_coral.tex

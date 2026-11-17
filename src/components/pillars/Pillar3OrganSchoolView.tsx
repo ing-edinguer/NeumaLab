@@ -76,7 +76,7 @@ const MODAL_CHORD_PALETTES: ModalChordPalette[] = [
     primaryTriads: 'Fa (I), Re m (vi), Do (V), Si♭ (IV♭), Sol m (ii con Si♭), La m (iii con Si♮)',
     firstInversions: 'Fa⁶ (bajo La), Si♭⁶ (bajo Re), Sol m⁶ (bajo Si♭), Re m⁶ (bajo Fa), Do⁶ (bajo Mi)',
     bFlatRule:
-      'En Modo VI y en el Salve Regina (Modo V), el Si♭ domina para evitar el tritono Fa–Si. En piezas de Modo V con Si♮, usar Do M y La m en el ascenso.',
+      'En Modo VI y en piezas del Tritus sobre Fa (Ubi caritas, Regina Caeli), el Si♭ domina para evitar el tritono Fa–Si. Cuando el Modo V se transporta sobre Do (Salve Regina Simplex, Adoro te devote), usar Do M, Sol M y La m con Si♮.',
     forbiddenElements: 'Prohibido Mi–Sol–Si♭ en estado fundamental (quinta disminuida sobre el bajo Mi).',
     demoChords: [
       { sopranoMidi: 65, altoMidi: 60, tenorMidi: 57, bassMidi: 41 },

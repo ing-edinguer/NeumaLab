@@ -173,7 +173,7 @@ const OCTOECHOS_DATA: OctoechosModeData[] = [
     ambitus: 'Fa4 – Fa5',
     semitonesPos: '4º–5º grado con Si♮ (La–Si–Do) o 3º–4º grado con Si♭ (La–Si♭–Do)',
     hexachords: ['Hexachordum Molle (Fa–Re con Si♭)', 'Hexachordum Naturale (con Si♮)'],
-    intonationFormula: 'Fa – La – Do5 – Re5 – Do5 (ej. Salve Regina Simplex, Adoro te devote)',
+    intonationFormula: 'Fa – La – Do5 – Re5 – Do5 (ej. Alma Redemptoris Mater; transpuesto en Do: Salve Regina)',
     intonationMidis: [65, 69, 72, 74, 72],
     scaleMidis: [65, 67, 69, 70, 72, 74, 76, 77],
     cadenceMidis: [72, 70, 69, 67, 65],
