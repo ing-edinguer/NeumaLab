@@ -54,14 +54,3 @@ npm run build
 # Previsualizar el bundle compilado
 npm run preview
 ```
-
----
-
-## Despliegue en GitHub Pages
-
-El proyecto ya incluye el workflow automático en [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), configurado para compilar y publicar `./dist` en cada `push` a `main` (o ejecución manual vía `workflow_dispatch`):
-
-1. En el repositorio de GitHub, ve a **Settings → Pages**.
-2. En **Build and deployment → Source**, selecciona **GitHub Actions**.
-3. Una vez ejecutado el workflow **Deploy NeumaLab to GitHub Pages**, el sitio quedará disponible en:
-   `https://ing-edinguer.github.io/NeumaLab/`
