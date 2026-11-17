@@ -139,20 +139,27 @@ export const OrganHarmonizationStudio: React.FC = () => {
         <div className="space-y-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-monastic-crimson px-3 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white">
-              <Sparkles className="w-3 h-3 text-monastic-gold" />
-              Fase 3 · Motor Inteligente de Órgano y Auto-Auditoría
+              <Sparkles className="w-3 h-3" aria-hidden="true" />
+              Motor Modal y Auto-Auditoría
             </span>
-            <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
-              <ShieldCheck className="w-3.5 h-3.5" />
+            <span
+              className="inline-flex items-center gap-1 rounded-md border px-2.5 py-0.5 text-xs font-semibold"
+              style={{
+                backgroundColor: 'var(--nm-success-soft)',
+                borderColor: 'var(--nm-success)',
+                color: 'var(--nm-success)',
+              }}
+            >
+              <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
               auditHarmonization(): {harmonization.auditChecklist.filter((c) => c.passed).length}/5 verificaciones ✓
             </span>
           </div>
-          <h3
+          <h2
             id="fase3-organ-heading"
             className="font-display text-lg sm:text-xl font-bold text-monastic-text"
           >
             Armonización Modal al Órgano, Síntesis Catedralicia y Auditoría Académica
-          </h3>
+          </h2>
           <p className="text-xs text-monastic-muted">
             Tratados de referencia: <strong className="text-monastic-text">Henri Potiron</strong>,{' '}
             <strong className="text-monastic-text">Dom Jean Hébert Desrocquettes</strong>,{' '}
@@ -511,12 +518,19 @@ export const OrganHarmonizationStudio: React.FC = () => {
         <div className="lg:col-span-5 rounded-xl border border-monastic-gold/30 bg-monastic-surface p-4 space-y-3">
           <div className="flex items-center justify-between border-b border-monastic-border pb-2.5">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <h4 className="font-display text-sm font-bold text-monastic-gold">
+              <ShieldCheck className="w-4 h-4" style={{ color: 'var(--nm-success)' }} aria-hidden="true" />
+              <h3 className="font-display text-sm font-bold text-monastic-gold">
                 Panel de Verificación Técnica (auditHarmonization)
-              </h4>
+              </h3>
             </div>
-            <span className="rounded-full bg-emerald-500/15 border border-emerald-500/40 px-2.5 py-0.5 text-[11px] font-bold text-emerald-400">
+            <span
+              className="rounded-full border px-2.5 py-0.5 text-[11px] font-bold"
+              style={{
+                backgroundColor: 'var(--nm-success-soft)',
+                borderColor: 'var(--nm-success)',
+                color: 'var(--nm-success)',
+              }}
+            >
               100% Aprobado ✓
             </span>
           </div>
@@ -529,10 +543,16 @@ export const OrganHarmonizationStudio: React.FC = () => {
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-bold text-monastic-text flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: 'var(--nm-success)' }} aria-hidden="true" />
                     {check.title}
                   </span>
-                  <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-mono font-bold text-emerald-400">
+                  <span
+                    className="rounded px-1.5 py-0.5 text-[10px] font-mono font-bold"
+                    style={{
+                      backgroundColor: 'var(--nm-success-soft)',
+                      color: 'var(--nm-success)',
+                    }}
+                  >
                     ✓ APROBADO
                   </span>
                 </div>

@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   Layers,
   CheckCircle2,
-  Clock,
   Sparkles,
   BookOpen,
   ScrollText,
@@ -13,6 +12,10 @@ import {
   Code2,
   Globe2,
   Piano,
+  Home,
+  Edit3,
+  Languages,
+  Library,
 } from 'lucide-react';
 import { type NavigationItem, NAVIGATION_ITEMS } from '../data/navigationPillars';
 import { useNeumaLab } from '../context/NeumaLabContext';
@@ -25,7 +28,11 @@ import { Pillar6DigitalNotationView } from './pillars/Pillar6DigitalNotationView
 import { Pillar7ResearchResourcesView } from './pillars/Pillar7ResearchResourcesView';
 
 const ICON_MAP: Record<NavigationItem['iconName'], React.FC<{ className?: string }>> = {
+  Home,
+  Edit3,
+  Languages,
   Piano,
+  Library,
   BookOpen,
   ScrollText,
   Music2,
@@ -45,16 +52,16 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
 
   return (
     <div className="space-y-8 pb-12">
-      {/* Cabecera del Pilar */}
+      {/* Cabecera del Área Académica */}
       <section
-        className="rounded-2xl border p-6 sm:p-8 shadow-sm space-y-5"
+        className="rounded-2xl border p-6 sm:p-8 shadow-xs space-y-5"
         style={{
           backgroundColor: 'var(--nm-bg-card)',
           borderColor: 'var(--nm-border)',
         }}
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             <span
               className="rounded-lg px-3 py-1 text-xs font-bold tracking-widest uppercase"
               style={{
@@ -72,33 +79,38 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
                 color: 'var(--nm-gold)',
               }}
             >
-              {pillar.phaseStatus.startsWith('Activo') ? (
-                <>
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                  100% Desarrollado · {pillar.phaseStatus}
-                </>
-              ) : (
-                <>
-                  <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                  Programado para Fase {pillar.phaseNumber} de 6
-                </>
-              )}
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+              {pillar.phaseStatus}
             </span>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveView('studio')}
-            className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-xs font-semibold transition-all cursor-pointer"
-            style={{
-              backgroundColor: 'var(--nm-bg-elevated)',
-              borderColor: 'var(--nm-gold)',
-              color: 'var(--nm-gold)',
-            }}
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Volver al Estudio Principal y Procesador Latino
-          </button>
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveView('home')}
+              className="inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer"
+              style={{
+                backgroundColor: 'var(--nm-bg-elevated)',
+                borderColor: 'var(--nm-border-strong)',
+                color: 'var(--nm-text-main)',
+              }}
+            >
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+              Inicio
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveView('editor')}
+              className="inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer"
+              style={{
+                backgroundColor: 'var(--nm-crimson)',
+                color: '#FFFFFF',
+              }}
+            >
+              <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+              Ir al Editor Gregoriano
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-start gap-5">
@@ -106,8 +118,8 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
             className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border"
             style={{
               backgroundColor: 'var(--nm-bg-elevated)',
-              borderColor: 'var(--nm-gold)',
-              color: 'var(--nm-gold)',
+              borderColor: 'var(--nm-border-strong)',
+              color: 'var(--nm-crimson-bright)',
             }}
           >
             <Icon className="h-8 w-8" aria-hidden="true" />
@@ -136,7 +148,7 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
         </div>
       </section>
 
-      {/* Vistas Interactivas Desarrolladas al 100% en Fases 4, 5 y 6 (Pilares 1 a 7) */}
+      {/* Vistas Interactivas del Área */}
       {pillar.id === 'pilar-1' && <Pillar1FoundationsView />}
       {pillar.id === 'pilar-2' && <Pillar2SemiologyView />}
       {pillar.id === 'pilar-3' && <Pillar3OrganSchoolView />}
@@ -145,7 +157,7 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
       {pillar.id === 'pilar-6' && <Pillar6DigitalNotationView />}
       {pillar.id === 'pilar-7' && <Pillar7ResearchResourcesView />}
 
-      {/* Submódulos Arquitectónicos del Pilar */}
+      {/* Programa de Contenidos */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2
@@ -153,11 +165,8 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
             style={{ color: 'var(--nm-text-main)' }}
           >
             <Layers className="h-5 w-5" style={{ color: 'var(--nm-gold)' }} aria-hidden="true" />
-            Módulos Académicos e Interactivos del {pillar.badge}
+            Módulos de Estudio — {pillar.shortLabel}
           </h2>
-          <span className="text-xs" style={{ color: 'var(--nm-text-muted)' }}>
-            Estado Global Conectado con Fase 1
-          </span>
         </div>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
@@ -229,7 +238,7 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
         </div>
       </section>
 
-      {/* Puente de Estado Global en Vivo: Texto Latino Activo desde Fase 1 */}
+      {/* Texto Latino Activo y Navegación Cruzada */}
       <section
         className="rounded-2xl border p-6 space-y-4"
         style={{
@@ -241,17 +250,13 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4" style={{ color: 'var(--nm-gold)' }} aria-hidden="true" />
             <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--nm-gold)' }}>
-              Sincronización con el Estado Global del Procesador Latino (Fase 1)
+              Texto Litúrgico Activo en el Taller
             </h2>
           </div>
           <span className="font-mono-code text-xs" style={{ color: 'var(--nm-text-muted)' }}>
-            {processedLatin.stats.totalWords} palabras · {processedLatin.stats.totalSyllables} sílabas activas en memoria
+            {processedLatin.stats.totalWords} palabras · {processedLatin.stats.totalSyllables} sílabas
           </span>
         </div>
-
-        <p className="text-xs leading-relaxed" style={{ color: 'var(--nm-text-muted)' }}>
-          El texto que estás analizando en el <strong>Procesador de Latín Litúrgico</strong> permanece sincronizado en el estado global de NeumaLab para alimentar automáticamente la salmodia, las curvas quironímicas, el generador GABC y las plantillas de armonización modal de este pilar:
-        </p>
 
         <div
           lang="la"
@@ -290,16 +295,15 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
           ))}
         </div>
 
-        {/* Mapa rápido para saltar a otros pilares */}
         <div className="pt-2">
           <span
             className="block text-[11px] font-semibold uppercase tracking-wider mb-2.5"
             style={{ color: 'var(--nm-text-muted)' }}
           >
-            Explorar la Arquitectura de los 7 Pilares:
+            Otras áreas de la Academia:
           </span>
           <div className="flex flex-wrap gap-2">
-            {NAVIGATION_ITEMS.map((nav) => {
+            {NAVIGATION_ITEMS.filter((n) => n.id.startsWith('pilar-')).map((nav) => {
               const isCurrent = nav.id === pillar.id;
               return (
                 <button
@@ -309,10 +313,10 @@ export const PillarArchitectureView: React.FC<PillarArchitectureViewProps> = ({ 
                   className="rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer"
                   style={{
                     backgroundColor: isCurrent
-                      ? 'var(--nm-gold)'
+                      ? 'var(--nm-crimson)'
                       : 'var(--nm-bg-elevated)',
-                    borderColor: isCurrent ? 'var(--nm-gold)' : 'var(--nm-border)',
-                    color: isCurrent ? '#121316' : 'var(--nm-text-main)',
+                    borderColor: isCurrent ? 'var(--nm-crimson)' : 'var(--nm-border)',
+                    color: isCurrent ? '#FFFFFF' : 'var(--nm-text-main)',
                   }}
                 >
                   {nav.shortLabel}

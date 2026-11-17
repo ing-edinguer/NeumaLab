@@ -72,7 +72,7 @@ const ANALYSIS_SHEETS: AnalysisSheet6Sections[] = [
       translation:
         'Ven, Espíritu Creador, visita las mentes de los tuyos; llena con la gracia celestial los corazones que Tú mismo creaste.',
       prosodyAnalysis:
-        'Construido en dímetros yámbicos acentuales de 8 sílabas (estrofa ambrosiana de 4 versos). Cada verso concluye invariablemente en palabra proparoxítona o Dactílica (`´ _ _`): «Spí-ri-tus», «ví-si-ta», «grá-ti-a», «péc-to-ra», produciendo una cadencia poética alada y ascendente.',
+        'Construido en dímetros yámbicos acentuales de 8 sílabas (estrofa ambrosiana de 4 versos). Cada verso concluye invariablemente en palabra proparoxítona o Dactílica (´ _ _): «Spí-ri-tus», «ví-si-ta», «grá-ti-a», «péc-to-ra», produciendo una cadencia poética alada y ascendente.',
     },
     section3ModalHexachordal:
       'Modo VIII (Tetrardus Plagal: Finalis Sol, Tenor Do5, escrito en Clave de Do en 3ª línea `c3` donde la 3ª línea `h` es Do5 y `e` es Sol4). El 1er verso gravita sobre la cuarta Sol–Do (cuerda madre Do arcaica); el 3er verso concluye ascendentemente en Do5 («grá(e\')ti(f)a(h.)») y el 4º regresa suavemente al Sol finalis con «cre(ed)á(f)sti(fgf) pé(e\')cto(d)ra.(e.)». Emplea Si natural del Hexachordum Durum (jamás Si♭).',
@@ -310,7 +310,7 @@ export const Pillar5RepertoireMagisteriumView: React.FC = () => {
 
   const handleOpenInStudio = (pieceId: string) => {
     loadVaticanaPiece(pieceId);
-    setActiveView('studio');
+    setActiveView('editor');
   };
 
   const handleTabKeyDown = (

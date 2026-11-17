@@ -11,6 +11,8 @@
     "test": "node --test src/lib/latinProcessor.test.ts"
   },
   "dependencies": {
+    "@oddbird/popover-polyfill": "^0.7.3",
+    "exsurge-ts": "^2.8.4",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

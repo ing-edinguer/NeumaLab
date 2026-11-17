@@ -1,69 +1,113 @@
 @import "tailwindcss";
 
+@theme {
+  --color-monastic-secondary: var(--nm-bg-secondary);
+  --color-monastic-surface: var(--nm-bg-card);
+  --color-monastic-elevated: var(--nm-bg-elevated);
+  --color-monastic-text: var(--nm-text-main);
+  --color-monastic-muted: var(--nm-text-muted);
+  --color-monastic-gold: var(--nm-gold);
+  --color-monastic-crimson: var(--nm-crimson);
+  --color-monastic-crimson-bright: var(--nm-crimson-bright);
+  --color-monastic-border: var(--nm-border);
+  --color-monastic-charcoal: var(--nm-on-accent);
+}
+
+@property --fade-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
 :root {
-  /* Raw tokens for Modo Pergamino (light) and Modo Oscuro Monástico (dark) */
-  --nm-bg-primary-light: #F5E6C8;
-  --nm-bg-primary-dark: #121316;
+  /* Paleta Editorial Vellum (Claro — inspirado en CMAA, Verbum Gloriae y Solesmes) */
+  --nm-bg-primary-light: #FAF7F2;
+  --nm-bg-secondary-light: #F2ECE1;
+  --nm-bg-elevated-light: #EBE3D5;
+  --nm-bg-card-light: #FFFFFF;
 
-  --nm-bg-secondary-light: #EFE0BB;
-  --nm-bg-secondary-dark: #181A1F;
+  --nm-text-main-light: #1A1715;
+  --nm-text-muted-light: #524B44;
+  --nm-text-subtle-light: #6E665E;
 
-  --nm-bg-elevated-light: #E7D4A8;
-  --nm-bg-elevated-dark: #20232A;
+  --nm-gold-light: #7A5410;
+  --nm-gold-soft-light: rgba(122, 84, 16, 0.11);
+  --nm-on-accent-light: #FFFFFF;
 
-  --nm-bg-card-light: rgba(251, 243, 224, 0.88);
-  --nm-bg-card-dark: rgba(24, 26, 31, 0.92);
+  --nm-crimson-light: #A91B1E;
+  --nm-crimson-bright-light: #991619;
+  --nm-crimson-soft-light: rgba(169, 27, 30, 0.10);
 
-  --nm-text-main-light: #2B1D12;
-  --nm-text-main-dark: #EFECE6;
+  --nm-navy-light: #1E3A5F;
+  --nm-navy-soft-light: rgba(30, 58, 95, 0.10);
+  --nm-success-light: #166534;
+  --nm-success-soft-light: rgba(22, 101, 52, 0.11);
 
-  --nm-text-muted-light: #5C4330;
-  --nm-text-muted-dark: #A39E93;
+  --nm-border-light: rgba(26, 23, 21, 0.15);
+  --nm-border-strong-light: rgba(26, 23, 21, 0.28);
 
-  --nm-text-subtle-light: #7B5E45;
-  --nm-text-subtle-dark: #757067;
+  --nm-scrollbar-track-light: #EDE6DA;
+  --nm-scrollbar-thumb-light: #928779;
 
-  --nm-gold-light: #8C6810;
-  --nm-gold-dark: #D4AF37;
+  /* Paleta Nocturno Monástico (Oscuro — equilibrado y de alto contraste) */
+  --nm-bg-primary-dark: #151413;
+  --nm-bg-secondary-dark: #1D1B19;
+  --nm-bg-elevated-dark: #272421;
+  --nm-bg-card-dark: #211E1C;
 
-  --nm-gold-soft-light: rgba(140, 104, 16, 0.16);
-  --nm-gold-soft-dark: rgba(212, 175, 55, 0.14);
+  --nm-text-main-dark: #F3EFE8;
+  --nm-text-muted-dark: #BFB7AA;
+  --nm-text-subtle-dark: #978E82;
 
-  --nm-crimson-light: #8B1E24;
-  --nm-crimson-dark: #8B1E24;
+  --nm-gold-dark: #DFB75E;
+  --nm-gold-soft-dark: rgba(223, 183, 94, 0.14);
+  --nm-on-accent-dark: #151413;
 
-  --nm-crimson-bright-light: #8B1E24;
-  --nm-crimson-bright-dark: #C8373F;
+  --nm-crimson-dark: #B6262A;
+  --nm-crimson-bright-dark: #EF6B6E;
+  --nm-crimson-soft-dark: rgba(182, 38, 42, 0.22);
 
-  --nm-crimson-soft-light: rgba(139, 30, 36, 0.13);
-  --nm-crimson-soft-dark: rgba(139, 30, 36, 0.28);
+  --nm-navy-dark: #7FA7D6;
+  --nm-navy-soft-dark: rgba(127, 167, 214, 0.14);
+  --nm-success-dark: #4ADE80;
+  --nm-success-soft-dark: rgba(74, 222, 128, 0.14);
 
-  --nm-border-light: rgba(92, 67, 48, 0.24);
-  --nm-border-dark: rgba(212, 175, 55, 0.2);
+  --nm-border-dark: rgba(243, 239, 232, 0.15);
+  --nm-border-strong-dark: rgba(243, 239, 232, 0.28);
 
-  --nm-scrollbar-track-light: #E7D4A8;
-  --nm-scrollbar-track-dark: #181A1F;
-  --nm-scrollbar-thumb-light: #8A6B4A;
-  --nm-scrollbar-thumb-dark: #6D6656;
+  --nm-scrollbar-track-dark: #1D1B19;
+  --nm-scrollbar-thumb-dark: #6E665C;
 
-  /* Default fallback tokens (Monástico Dark by default) */
-  --nm-bg-primary: var(--nm-bg-primary-dark);
-  --nm-bg-secondary: var(--nm-bg-secondary-dark);
-  --nm-bg-elevated: var(--nm-bg-elevated-dark);
-  --nm-bg-card: var(--nm-bg-card-dark);
-  --nm-text-main: var(--nm-text-main-dark);
-  --nm-text-muted: var(--nm-text-muted-dark);
-  --nm-text-subtle: var(--nm-text-subtle-dark);
-  --nm-gold: var(--nm-gold-dark);
-  --nm-gold-soft: var(--nm-gold-soft-dark);
-  --nm-crimson: var(--nm-crimson-dark);
-  --nm-crimson-bright: var(--nm-crimson-bright-dark);
-  --nm-crimson-soft: var(--nm-crimson-soft-dark);
-  --nm-border: var(--nm-border-dark);
-  --nm-scrollbar-track: var(--nm-scrollbar-track-dark);
-  --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-dark);
+  /* Tokens activos por defecto (claro en OS claro) */
+  --nm-bg-primary: var(--nm-bg-primary-light);
+  --nm-bg-secondary: var(--nm-bg-secondary-light);
+  --nm-bg-elevated: var(--nm-bg-elevated-light);
+  --nm-bg-card: var(--nm-bg-card-light);
+  --nm-text-main: var(--nm-text-main-light);
+  --nm-text-muted: var(--nm-text-muted-light);
+  --nm-text-subtle: var(--nm-text-subtle-light);
+  --nm-gold: var(--nm-gold-light);
+  --nm-gold-soft: var(--nm-gold-soft-light);
+  --nm-on-accent: var(--nm-on-accent-light);
+  --nm-crimson: var(--nm-crimson-light);
+  --nm-crimson-bright: var(--nm-crimson-bright-light);
+  --nm-crimson-soft: var(--nm-crimson-soft-light);
+  --nm-navy: var(--nm-navy-light);
+  --nm-navy-soft: var(--nm-navy-soft-light);
+  --nm-success: var(--nm-success-light);
+  --nm-success-soft: var(--nm-success-soft-light);
+  --nm-border: var(--nm-border-light);
+  --nm-border-strong: var(--nm-border-strong-light);
+  --nm-scrollbar-track: var(--nm-scrollbar-track-light);
+  --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-light);
 
-  /* MANDATORY: Apply color-scheme to :root for viewport-wide theming */
+  /* MANDATORY per dark-mode / dark-mode-toggle: keep base color-scheme: light dark and map meta override */
   color-scheme: light dark;
 
   &:has(> head > meta[name="color-scheme"][content="dark"]) {
@@ -74,22 +118,28 @@
     color-scheme: light;
   }
 
-  @media (prefers-color-scheme: light) {
-    --nm-bg-primary: var(--nm-bg-primary-light);
-    --nm-bg-secondary: var(--nm-bg-secondary-light);
-    --nm-bg-elevated: var(--nm-bg-elevated-light);
-    --nm-bg-card: var(--nm-bg-card-light);
-    --nm-text-main: var(--nm-text-main-light);
-    --nm-text-muted: var(--nm-text-muted-light);
-    --nm-text-subtle: var(--nm-text-subtle-light);
-    --nm-gold: var(--nm-gold-light);
-    --nm-gold-soft: var(--nm-gold-soft-light);
-    --nm-crimson: var(--nm-crimson-light);
-    --nm-crimson-bright: var(--nm-crimson-bright-light);
-    --nm-crimson-soft: var(--nm-crimson-soft-light);
-    --nm-border: var(--nm-border-light);
-    --nm-scrollbar-track: var(--nm-scrollbar-track-light);
-    --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-light);
+  @media (prefers-color-scheme: dark) {
+    --nm-bg-primary: var(--nm-bg-primary-dark);
+    --nm-bg-secondary: var(--nm-bg-secondary-dark);
+    --nm-bg-elevated: var(--nm-bg-elevated-dark);
+    --nm-bg-card: var(--nm-bg-card-dark);
+    --nm-text-main: var(--nm-text-main-dark);
+    --nm-text-muted: var(--nm-text-muted-dark);
+    --nm-text-subtle: var(--nm-text-subtle-dark);
+    --nm-gold: var(--nm-gold-dark);
+    --nm-gold-soft: var(--nm-gold-soft-dark);
+    --nm-on-accent: var(--nm-on-accent-dark);
+    --nm-crimson: var(--nm-crimson-dark);
+    --nm-crimson-bright: var(--nm-crimson-bright-dark);
+    --nm-crimson-soft: var(--nm-crimson-soft-dark);
+    --nm-navy: var(--nm-navy-dark);
+    --nm-navy-soft: var(--nm-navy-soft-dark);
+    --nm-success: var(--nm-success-dark);
+    --nm-success-soft: var(--nm-success-soft-dark);
+    --nm-border: var(--nm-border-dark);
+    --nm-border-strong: var(--nm-border-strong-dark);
+    --nm-scrollbar-track: var(--nm-scrollbar-track-dark);
+    --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-dark);
   }
 
   @supports (color: light-dark(white, black)) {
@@ -102,21 +152,28 @@
     --nm-text-subtle: light-dark(var(--nm-text-subtle-light), var(--nm-text-subtle-dark));
     --nm-gold: light-dark(var(--nm-gold-light), var(--nm-gold-dark));
     --nm-gold-soft: light-dark(var(--nm-gold-soft-light), var(--nm-gold-soft-dark));
+    --nm-on-accent: light-dark(var(--nm-on-accent-light), var(--nm-on-accent-dark));
     --nm-crimson: light-dark(var(--nm-crimson-light), var(--nm-crimson-dark));
     --nm-crimson-bright: light-dark(var(--nm-crimson-bright-light), var(--nm-crimson-bright-dark));
     --nm-crimson-soft: light-dark(var(--nm-crimson-soft-light), var(--nm-crimson-soft-dark));
+    --nm-navy: light-dark(var(--nm-navy-light), var(--nm-navy-dark));
+    --nm-navy-soft: light-dark(var(--nm-navy-soft-light), var(--nm-navy-soft-dark));
+    --nm-success: light-dark(var(--nm-success-light), var(--nm-success-dark));
+    --nm-success-soft: light-dark(var(--nm-success-soft-light), var(--nm-success-soft-dark));
     --nm-border: light-dark(var(--nm-border-light), var(--nm-border-dark));
+    --nm-border-strong: light-dark(var(--nm-border-strong-light), var(--nm-border-strong-dark));
     --nm-scrollbar-track: light-dark(var(--nm-scrollbar-track-light), var(--nm-scrollbar-track-dark));
     --nm-scrollbar-thumb: light-dark(var(--nm-scrollbar-thumb-light), var(--nm-scrollbar-thumb-dark));
   }
 
-  accent-color: var(--nm-gold);
-  /* Pair scrollbar-color with scrollbar-width so macOS renders themed scrollbars; never animate scrollbar-color */
+  accent-color: var(--nm-crimson);
   scrollbar-width: thin;
   scrollbar-color: var(--nm-scrollbar-thumb) var(--nm-scrollbar-track);
 }
 
-:root[data-theme="parchment"] {
+/* Fallback sin :has() para navegadores antiguos cuando el usuario fuerza tema */
+:root[data-color-scheme="light"] {
+  color-scheme: light;
   --nm-bg-primary: var(--nm-bg-primary-light);
   --nm-bg-secondary: var(--nm-bg-secondary-light);
   --nm-bg-elevated: var(--nm-bg-elevated-light);
@@ -126,15 +183,22 @@
   --nm-text-subtle: var(--nm-text-subtle-light);
   --nm-gold: var(--nm-gold-light);
   --nm-gold-soft: var(--nm-gold-soft-light);
+  --nm-on-accent: var(--nm-on-accent-light);
   --nm-crimson: var(--nm-crimson-light);
   --nm-crimson-bright: var(--nm-crimson-bright-light);
   --nm-crimson-soft: var(--nm-crimson-soft-light);
+  --nm-navy: var(--nm-navy-light);
+  --nm-navy-soft: var(--nm-navy-soft-light);
+  --nm-success: var(--nm-success-light);
+  --nm-success-soft: var(--nm-success-soft-light);
   --nm-border: var(--nm-border-light);
+  --nm-border-strong: var(--nm-border-strong-light);
   --nm-scrollbar-track: var(--nm-scrollbar-track-light);
   --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-light);
 }
 
-:root[data-theme="monastic-dark"] {
+:root[data-color-scheme="dark"] {
+  color-scheme: dark;
   --nm-bg-primary: var(--nm-bg-primary-dark);
   --nm-bg-secondary: var(--nm-bg-secondary-dark);
   --nm-bg-elevated: var(--nm-bg-elevated-dark);
@@ -144,15 +208,20 @@
   --nm-text-subtle: var(--nm-text-subtle-dark);
   --nm-gold: var(--nm-gold-dark);
   --nm-gold-soft: var(--nm-gold-soft-dark);
+  --nm-on-accent: var(--nm-on-accent-dark);
   --nm-crimson: var(--nm-crimson-dark);
   --nm-crimson-bright: var(--nm-crimson-bright-dark);
   --nm-crimson-soft: var(--nm-crimson-soft-dark);
+  --nm-navy: var(--nm-navy-dark);
+  --nm-navy-soft: var(--nm-navy-soft-dark);
+  --nm-success: var(--nm-success-dark);
+  --nm-success-soft: var(--nm-success-soft-dark);
   --nm-border: var(--nm-border-dark);
+  --nm-border-strong: var(--nm-border-strong-dark);
   --nm-scrollbar-track: var(--nm-scrollbar-track-dark);
   --nm-scrollbar-thumb: var(--nm-scrollbar-thumb-dark);
 }
 
-/* Legacy fallback for WebKit/Blink browsers without scrollbar-color support */
 @supports not (scrollbar-color: auto) {
   ::-webkit-scrollbar {
     width: 10px;
@@ -171,7 +240,17 @@ body {
   background-color: var(--nm-bg-primary);
   color: var(--nm-text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  text-align: start;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 .font-display {
@@ -179,14 +258,18 @@ body {
 }
 
 .font-liturgical {
-  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-family: 'EB Garamond', 'Crimson Pro', Georgia, 'Times New Roman', serif;
+}
+
+.font-editorial {
+  font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
 }
 
 .font-mono-code {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Visually hidden utility that becomes visible when focused (e.g., Skip link) */
+/* Visually hidden utility that becomes visible when focused (Skip link) */
 .visually-hidden:where(:not(:focus-within, :active)) {
   position: absolute !important;
   clip-path: inset(50%) !important;
@@ -200,36 +283,367 @@ body {
 }
 
 /* High contrast focus indicators with outline-offset */
-:where(a:any-link, button, input, select, textarea):focus-visible {
-  outline: 2px solid var(--nm-gold);
+:where(a:any-link, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--nm-crimson);
   outline-offset: 2px;
 }
 
-/* Accessible Tabs styling per Modern Web Guidance (tabs) */
+/* ==========================================================================
+   Site Navigation Bar (Modern Web Guidance: navbar + viewport-aware-dropdowns)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 30;
+  background-color: var(--nm-bg-card);
+  border-block-end: 1px solid var(--nm-border);
+  box-shadow: 0 1px 6px rgba(26, 23, 21, 0.05);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-inline-size: 82rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  min-block-size: 3.75rem;
+}
+
+@media (min-width: 1024px) {
+  .site-header-inner {
+    padding-inline: 2rem;
+  }
+}
+
+.site-header-inner > * {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.site-header.is-measuring * {
+  transition: none !important;
+}
+
+.site-header .menu-button {
+  anchor-name: --menu-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-block-size: 2.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--nm-border-strong);
+  background-color: var(--nm-bg-elevated);
+  color: var(--nm-text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.site-header .site-menu {
+  position: fixed;
+  inset: auto;
+  inset-block-start: 4.1rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(86dvw, 24rem);
+  max-inline-size: calc(100dvw - 2rem);
+  block-size: fit-content;
+  max-block-size: calc(100dvh - 5.5rem);
+  margin-block-start: 0.4rem;
+  padding: 0.75rem;
+  overflow: auto;
+  border-radius: 0.9rem;
+  border: 1px solid var(--nm-border-strong);
+  background-color: var(--nm-bg-card);
+  color: var(--nm-text-main);
+  box-shadow: 0 18px 40px -12px rgba(26, 23, 21, 0.28);
+  list-style: none;
+}
+
+.site-header .site-menu::backdrop {
+  background-color: rgba(20, 18, 16, 0.35);
+}
+
+.site-header .nav-link-btn,
+.site-header .dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-block-size: 2.5rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--nm-text-main);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+}
+
+@media (hover: hover) {
+  .site-header .nav-link-btn:hover,
+  .site-header .dropdown-trigger:hover {
+    background-color: var(--nm-bg-elevated);
+  }
+}
+
+.site-header [aria-current="page"] {
+  font-weight: 700;
+  color: var(--nm-crimson-bright);
+  background-color: var(--nm-crimson-soft);
+  border-color: var(--nm-crimson);
+}
+
+.site-header .dropdown-list {
+  list-style: none;
+  margin: 0.25rem 0 0.5rem 0.75rem;
+  padding: 0.35rem;
+  border-inline-start: 2px solid var(--nm-border-strong);
+  display: grid;
+  gap: 0.2rem;
+}
+
+.site-header .dropdown-list[hidden] {
+  display: none;
+}
+
+/* Wide layout: inline navigation */
+.site-header.is-wide .menu-button {
+  display: none;
+}
+
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  inline-size: auto;
+  max-inline-size: none;
+  block-size: auto;
+  max-block-size: none;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.site-header.is-wide .site-menu::backdrop {
+  display: none;
+}
+
+.site-header.is-wide .nav-link-btn,
+.site-header.is-wide .dropdown-trigger {
+  width: auto;
+  padding: 0.42rem 0.72rem;
+  border-radius: 0.45rem;
+}
+
+.site-header.is-wide [aria-current="page"] {
+  background-color: transparent;
+  border-color: transparent;
+  border-block-end: 3px solid var(--nm-crimson);
+  border-radius: 0.45rem 0.45rem 0 0;
+  color: var(--nm-crimson-bright);
+}
+
+.site-header.is-wide .nav-dropdown {
+  position: relative;
+}
+
+.site-header.is-wide .dropdown-list[popover] {
+  position: fixed;
+  margin: 0;
+  padding: 0.5rem;
+  border-inline-start: 1px solid var(--nm-border-strong);
+  border: 1px solid var(--nm-border-strong);
+  border-radius: 0.85rem;
+  background-color: var(--nm-bg-card);
+  color: var(--nm-text-main);
+  box-shadow: 0 18px 36px -10px rgba(26, 23, 21, 0.24);
+  min-inline-size: 16.5rem;
+  max-inline-size: 22rem;
+  height: auto;
+  overflow: visible;
+}
+
+@supports (position-area: block-end) {
+  .site-header.is-wide .dropdown-list[popover] {
+    position: absolute;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline;
+    inset: auto;
+    margin-block-start: 0.45rem;
+  }
+}
+
+.site-header.is-wide .dropdown-list::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 100%;
+  block-size: 0.5rem;
+}
+
+.site-header.is-wide .dropdown-list:not(:is(:popover-open, .\:popover-open)) {
+  display: none;
+}
+
+.site-header.is-wide .dropdown-list:is(:popover-open, .\:popover-open) {
+  display: grid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header .site-menu[popover],
+  .site-header.is-wide .dropdown-list[popover] {
+    transition: opacity 0.16s ease, translate 0.16s ease, display 0.16s, overlay 0.16s;
+    transition-behavior: allow-discrete;
+    opacity: 0;
+    translate: 0 -4px;
+  }
+
+  .site-header .site-menu[popover]:is(:popover-open, .\:popover-open),
+  .site-header.is-wide .dropdown-list[popover]:is(:popover-open, .\:popover-open) {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @starting-style {
+    .site-header .site-menu[popover]:is(:popover-open, .\:popover-open),
+    .site-header.is-wide .dropdown-list[popover]:is(:popover-open, .\:popover-open) {
+      opacity: 0;
+      translate: 0 -4px;
+    }
+  }
+}
+
+/* ==========================================================================
+   Accessible Tabs with Scrollable Edge Fades (Modern Web Guidance: tabs)
+   ========================================================================== */
+[role="tablist"].nm-tablist {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: inline proximity;
+  --fade-size: 2.25rem;
+  mask:
+    linear-gradient(black, black) no-clip subtract,
+    linear-gradient(to right, black, transparent) 0 0 / var(--fade-start) 100% no-repeat no-clip,
+    linear-gradient(to right, transparent, black) 100% 0 / var(--fade-end) 100% no-repeat no-clip;
+  animation: nm-reveal-fade-start linear both, nm-hide-fade-end linear both;
+  animation-timeline: scroll(self inline);
+  animation-range: 0 var(--fade-size), calc(100% - var(--fade-size)) 100%;
+}
+
+@keyframes nm-reveal-fade-start {
+  to {
+    --fade-start: var(--fade-size);
+  }
+}
+
+@keyframes nm-hide-fade-end {
+  from {
+    --fade-end: var(--fade-size);
+  }
+}
+
 [role="tab"] {
   position: relative;
   flex: none;
+  scroll-snap-align: start;
+  min-block-size: 2.5rem;
 }
 
 [role="tab"][aria-selected="true"] {
-  color: var(--nm-gold);
+  color: var(--nm-crimson-bright);
+  font-weight: 700;
 
   &::after {
     content: "";
     position: absolute;
     inset: auto 0 0;
-    border-block-end: 3px solid var(--nm-gold);
+    border-block-end: 3px solid var(--nm-crimson);
   }
 }
 
-/* Brand-Consistent Range Slider per Modern Web Guidance (slider) */
+/* ==========================================================================
+   Editor Toolbar (Modern Web Guidance: toolbar)
+   ========================================================================== */
+[role="toolbar"].nm-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--nm-border);
+  background-color: var(--nm-bg-elevated);
+}
+
+[role="toolbar"].nm-toolbar [role="group"] {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+[role="toolbar"].nm-toolbar [role="separator"] {
+  inline-size: 1px;
+  block-size: 1.5rem;
+  border-inline-start: 1px solid var(--nm-border-strong);
+  margin-inline: 0.2rem;
+}
+
+[role="toolbar"].nm-toolbar button {
+  min-inline-size: 2rem;
+  min-block-size: 2rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--nm-border);
+  background-color: var(--nm-bg-card);
+  color: var(--nm-text-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+[role="toolbar"].nm-toolbar button[aria-pressed="true"] {
+  background-color: var(--nm-crimson);
+  border-color: var(--nm-crimson);
+  color: #FFFFFF;
+}
+
+@media (hover: hover) {
+  [role="toolbar"].nm-toolbar button:not([aria-pressed="true"]):hover {
+    border-color: var(--nm-gold);
+    background-color: var(--nm-gold-soft);
+  }
+}
+
+@media (pointer: coarse) {
+  [role="toolbar"].nm-toolbar button {
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+  }
+}
+
+/* Brand-Consistent Range Slider */
 input[type="range"] {
-  --slider-track-size: 0.45rem;
-  --slider-thumb-size: 1.1rem;
+  --slider-track-size: 0.42rem;
+  --slider-thumb-size: 1.05rem;
   --slider-track-radius: 999px;
   --slider-thumb-radius: 50%;
   --slider-track-color: var(--nm-bg-elevated);
-  --slider-fill-color: var(--nm-gold);
+  --slider-fill-color: var(--nm-crimson);
   --slider-thumb-color: var(--slider-fill-color);
   --slider-direction: to right;
 
@@ -309,12 +723,7 @@ input[type="range"]::-moz-range-thumb {
   background: var(--slider-thumb-color);
 }
 
-input[type="range"]:focus-visible {
-  outline: 2px solid var(--slider-fill-color);
-  outline-offset: 4px;
-}
-
-/* Responsive Data Table per Modern Web Guidance (responsive-table) */
+/* Responsive Data Table */
 .table-wrapper {
   overflow: auto;
   max-inline-size: 100%;
@@ -395,15 +804,69 @@ input[type="range"]:focus-visible {
   }
 }
 
-/* Subtle manuscript texture for Parchment mode */
-:root[data-theme="parchment"] body {
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(139, 30, 36, 0.03), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(140, 104, 16, 0.06), transparent 50%);
+/* Evita la sustitución epigráfica u→v de EB Garamond al declarar lang="la" */
+[lang="la"],
+.editorial-score-paper svg.Exsurge text {
+  font-feature-settings: "locl" 0;
 }
 
-:root[data-theme="monastic-dark"] body {
-  background-image:
-    radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.045), transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(139, 30, 36, 0.07), transparent 45%);
+/* Editorial Score Paper (component-specific light theme for sheet music legibility) */
+.editorial-score-paper {
+  color-scheme: light;
+  color: #1A1715;
+}
+
+.editorial-score-paper svg.Exsurge {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.editorial-score-paper svg.Exsurge .rubric {
+  fill: #C41212;
+}
+
+.editorial-score-paper svg.Exsurge .nm-active-notation {
+  filter: drop-shadow(0 0 3px rgba(196, 18, 18, 0.65));
+}
+
+/* Forced Colors Mode (High Contrast Windows) */
+@media (forced-colors: active) {
+  .site-header [aria-current="page"] {
+    border-color: Highlight;
+    color: Highlight;
+  }
+
+  [role="toolbar"].nm-toolbar button[aria-pressed="true"] {
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  [role="tab"][aria-selected="true"]::after {
+    border-block-end-color: Highlight;
+  }
+}
+
+/* Print Stylesheet: prints ONLY the clean Gregorian folio sheet */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .no-print,
+  .site-header,
+  footer {
+    display: none !important;
+  }
+
+  .editorial-score-paper {
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    background: #FFFFFF !important;
+  }
 }

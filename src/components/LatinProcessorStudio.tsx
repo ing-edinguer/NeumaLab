@@ -18,8 +18,6 @@ import {
 import { useNeumaLab } from '../context/NeumaLabContext';
 import { LITURGICAL_PRESETS } from '../data/liturgicalDictionary';
 import { type ProcessedWord } from '../lib/latinProcessor';
-import { MultimodalNoteInput } from './MultimodalNoteInput';
-import { OrganHarmonizationStudio } from './OrganHarmonizationStudio';
 
 const PAUSE_LABELS: Record<ProcessedWord['pauseType'], string> = {
   none: '',
@@ -104,6 +102,7 @@ export const LatinProcessorStudio: React.FC = () => {
     setShowGlosses,
     selectedOrganMode,
     setSelectedOrganMode,
+    setActiveView,
   } = useNeumaLab();
 
   const [selectedWordIndex, setSelectedWordIndex] = useState<number>(0);
@@ -218,14 +217,42 @@ export const LatinProcessorStudio: React.FC = () => {
               className="font-display text-2xl font-bold tracking-wide sm:text-3xl"
               style={{ color: 'var(--nm-text-main)' }}
             >
-              Estudio de Acompañamiento al Órgano y Procesador de Latín Litúrgico
+              Procesador de Latín Litúrgico y Pronuntiatio Romana
             </h1>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--nm-text-muted)' }}>
-              Escribe o pega cualquier texto del <em>Liber Usualis</em> o <em>Graduale Romanum</em>. El motor separa sílabas automáticamente, detecta acentos tónicos, clasifica los finales de incisa y frase en <strong>Espondaicos (`´ _`)</strong> o <strong>Dactílicos (`´ _ _`)</strong> y genera la transcripción fonética para hispanohablantes.{' '}
+              Escribe o pega cualquier texto del <em>Liber Usualis</em> o <em>Graduale Romanum</em>. El motor separa sílabas automáticamente, detecta acentos tónicos, clasifica los finales de incisa y frase en <strong>Espondaicos (´ _)</strong> o <strong>Dactílicos (´ _ _)</strong> y genera la transcripción fonética para hispanohablantes.{' '}
               <strong style={{ color: 'var(--nm-gold)' }}>
                 Haz clic sobre cualquier sílaba para cambiar manualmente el acento tónico.
               </strong>
             </p>
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() => setActiveView('editor')}
+                className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold cursor-pointer"
+                style={{
+                  backgroundColor: 'var(--nm-bg-elevated)',
+                  borderColor: 'var(--nm-border-strong)',
+                  color: 'var(--nm-crimson-bright)',
+                }}
+              >
+                <Music className="h-3.5 w-3.5" aria-hidden="true" />
+                Abrir Partitura en Editor
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveView('organ-studio')}
+                className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold cursor-pointer"
+                style={{
+                  backgroundColor: 'var(--nm-bg-elevated)',
+                  borderColor: 'var(--nm-border-strong)',
+                  color: 'var(--nm-navy)',
+                }}
+              >
+                <Sliders className="h-3.5 w-3.5" aria-hidden="true" />
+                Ir a Consola de Órgano
+              </button>
+            </div>
           </div>
 
           {/* Tarjeta de Estadísticas Rápidas */}
@@ -238,7 +265,7 @@ export const LatinProcessorStudio: React.FC = () => {
           >
             <div className="px-2 py-1">
               <span className="block text-[11px] uppercase tracking-wider" style={{ color: 'var(--nm-text-muted)' }}>
-                Espondaicas (`´ _`)
+                Espondaicas (´ _)
               </span>
               <span className="font-mono-code text-lg font-bold" style={{ color: 'var(--nm-gold)' }}>
                 {processedLatin.stats.spondaicWords}{' '}
@@ -250,7 +277,7 @@ export const LatinProcessorStudio: React.FC = () => {
 
             <div className="px-2 py-1">
               <span className="block text-[11px] uppercase tracking-wider" style={{ color: 'var(--nm-text-muted)' }}>
-                Dactílicas (`´ _ _`)
+                Dactílicas (´ _ _)
               </span>
               <span className="font-mono-code text-lg font-bold" style={{ color: 'var(--nm-crimson-bright)' }}>
                 {processedLatin.stats.dactylicWords}{' '}
@@ -334,12 +361,6 @@ export const LatinProcessorStudio: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Módulo Fase 2: Interfaz Multimodal de Notas, Tetragrama y Repertorio Oficial (Editio Vaticana) */}
-      <MultimodalNoteInput />
-
-      {/* Módulo Fase 3: Motor Inteligente de Acompañamiento al Órgano, Síntesis Catedralicia y Auto-Auditoría */}
-      <OrganHarmonizationStudio />
 
       {/* Grid Principal: Editor de Entrada + Controles (Izquierda) y Lienzo Interactivo de Sílabas (Derecha) */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
@@ -550,7 +571,7 @@ export const LatinProcessorStudio: React.FC = () => {
                   Partitura Verbal Interactiva y Pronuntiatio Romana
                 </h2>
                 <p className="text-xs" style={{ color: 'var(--nm-text-muted)' }}>
-                  Pulsa sobre cualquier sílaba para desplazar el acento tónico (`´`) y recalcular el ritmo Espondaico o Dactílico.
+                  Pulsa sobre cualquier sílaba para desplazar el acento tónico (´) y recalcular el ritmo Espondaico o Dactílico.
                 </p>
               </div>
 
@@ -631,7 +652,7 @@ export const LatinProcessorStudio: React.FC = () => {
                   style={{ backgroundColor: 'var(--nm-gold)' }}
                 />
                 <span>
-                  <strong>Espondaica (`´ _`):</strong> Paroxítona / Llana (ej. <em>Sál-ve, cór-de</em>)
+                  <strong>Espondaica (´ _):</strong> Paroxítona / Llana (ej. <em>Sál-ve, cór-de</em>)
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -640,7 +661,7 @@ export const LatinProcessorStudio: React.FC = () => {
                   style={{ backgroundColor: 'var(--nm-crimson-bright)' }}
                 />
                 <span>
-                  <strong>Dactílica (`´ _ _`):</strong> Proparoxítona / Esdrújula (ej. <em>Dó-mi-nus, Spí-ri-tus</em>)
+                  <strong>Dactílica (´ _ _):</strong> Proparoxítona / Esdrújula (ej. <em>Dó-mi-nus, Spí-ri-tus</em>)
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -740,7 +761,7 @@ export const LatinProcessorStudio: React.FC = () => {
                             className="rounded px-1.5 py-0.5 text-[9px] font-semibold"
                             style={{
                               backgroundColor: 'var(--nm-gold)',
-                              color: '#121316',
+                              color: 'var(--nm-on-accent)',
                             }}
                           >
                             Editado
@@ -1074,7 +1095,7 @@ export const LatinProcessorStudio: React.FC = () => {
                   </strong>
                   {inspectedWord.rhythmType === 'dactilica' ? (
                     <p className="leading-relaxed" style={{ color: 'var(--nm-text-muted)' }}>
-                      Al ser una palabra <strong>Dactílica (`´ _ _`)</strong>, la sílaba postónica intermedia («
+                      Al ser una palabra <strong>Dactílica (´ _ _)</strong>, la sílaba postónica intermedia («
                       <strong>{inspectedWord.syllables[inspectedWord.stressedIndex + 1]?.text}</strong>
                       ») es ingrávida y de transición: <strong>nunca coloques un cambio de acorde pesado en ella</strong>. Mantén el acorde desde la sílaba tónica («
                       <strong>{inspectedWord.syllables[inspectedWord.stressedIndex]?.text}</strong>
@@ -1084,7 +1105,7 @@ export const LatinProcessorStudio: React.FC = () => {
                     </p>
                   ) : inspectedWord.rhythmType === 'espondaica' ? (
                     <p className="leading-relaxed" style={{ color: 'var(--nm-text-muted)' }}>
-                      Al ser una palabra <strong>Espondaica (`´ _`)</strong>, presenta equilibrio binario entre el impulso tónico («
+                      Al ser una palabra <strong>Espondaica (´ _)</strong>, presenta equilibrio binario entre el impulso tónico («
                       <strong>{inspectedWord.syllables[inspectedWord.stressedIndex]?.text}</strong>
                       ») y la tesis final («
                       <strong>{inspectedWord.syllables[inspectedWord.syllables.length - 1]?.text}</strong>
@@ -1241,7 +1262,7 @@ export const LatinProcessorStudio: React.FC = () => {
                           backgroundColor:
                             exportFormat === tab.id ? 'var(--nm-gold)' : 'transparent',
                           color:
-                            exportFormat === tab.id ? '#121316' : 'var(--nm-text-muted)',
+                            exportFormat === tab.id ? 'var(--nm-on-accent)' : 'var(--nm-text-muted)',
                         }}
                       >
                         {tab.label}
@@ -1269,7 +1290,7 @@ export const LatinProcessorStudio: React.FC = () => {
                 style={{
                   backgroundColor: copied ? 'var(--nm-gold)' : 'var(--nm-crimson)',
                   borderColor: copied ? 'var(--nm-gold)' : 'var(--nm-crimson)',
-                  color: copied ? '#121316' : '#FFFFFF',
+                  color: copied ? 'var(--nm-on-accent)' : '#FFFFFF',
                 }}
               >
                 {copied ? (

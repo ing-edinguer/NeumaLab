@@ -1290,7 +1290,7 @@ export const Pillar1FoundationsView: React.FC = () => {
               {[
                 {
                   step: '1. Entonación (Inchoatio)',
-                  color: 'text-sky-400 border-sky-500/40 bg-sky-500/10',
+                  color: 'text-[var(--nm-navy)] border-[var(--nm-navy)]/40 bg-[var(--nm-navy-soft)]',
                   desc: 'Fórmula ascendente de 2 a 4 notas que conduce desde el reposo hacia la cuerda recitativa.',
                 },
                 {
@@ -1300,12 +1300,12 @@ export const Pillar1FoundationsView: React.FC = () => {
                 },
                 {
                   step: '3. Flexa (†)',
-                  color: 'text-purple-400 border-purple-500/40 bg-purple-500/10',
+                  color: 'text-[var(--nm-crimson-bright)] border-[var(--nm-crimson)]/40 bg-[var(--nm-crimson-soft)]',
                   desc: 'Descenso de segunda o tercera menor cuando el primer hemistiquio tiene tres miembros.',
                 },
                 {
                   step: '4. Mediación (*)',
-                  color: 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10',
+                  color: 'text-[var(--nm-success)] border-[var(--nm-success)]/40 bg-[var(--nm-success-soft)]',
                   desc: 'Cadencia central de 1 o 2 acentos con pausa solemne en el asterisco (*).',
                 },
                 {
@@ -1417,12 +1417,12 @@ export const Pillar1FoundationsView: React.FC = () => {
                 Aplicación Automática de Sílabas Preparatorias, Tónicas y Sobreabundantes
               </h4>
               <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold">
-                <span className="rounded bg-sky-500/20 text-sky-300 px-2 py-0.5">Entonación</span>
+                <span className="rounded bg-[var(--nm-navy-soft)] text-[var(--nm-navy)] px-2 py-0.5">Entonación</span>
                 <span className="rounded bg-monastic-elevated text-monastic-text px-2 py-0.5">Tenor</span>
-                <span className="rounded bg-emerald-500/20 text-emerald-300 px-2 py-0.5">Preparatoria</span>
+                <span className="rounded bg-[var(--nm-success-soft)] text-[var(--nm-success)] px-2 py-0.5">Preparatoria</span>
                 <span className="rounded bg-monastic-crimson text-white px-2 py-0.5">Acento Tónico (´)</span>
-                <span className="rounded bg-purple-500/25 text-purple-300 px-2 py-0.5">Sobreabundante Dactílica (◇)</span>
-                <span className="rounded bg-monastic-gold text-monastic-charcoal px-2 py-0.5">Final Cadencia</span>
+                <span className="rounded bg-[var(--nm-crimson-soft)] text-[var(--nm-crimson-bright)] px-2 py-0.5">Sobreabundante Dactílica (◇)</span>
+                <span className="rounded bg-monastic-gold text-[var(--nm-on-accent)] px-2 py-0.5">Final Cadencia</span>
               </div>
             </div>
 
@@ -1435,13 +1435,13 @@ export const Pillar1FoundationsView: React.FC = () => {
                 {analyzedPsalmHalfverses.firstHalf.map((syl, idx) => {
                   const badgeClass =
                     syl.role === 'intonation'
-                      ? 'border-sky-500/50 bg-sky-500/15 text-sky-300'
+                      ? 'border-[var(--nm-navy)]/50 bg-[var(--nm-navy-soft)] text-[var(--nm-navy)]'
                       : syl.role === 'preparatory'
-                        ? 'border-emerald-500/50 bg-emerald-500/15 text-emerald-300'
+                        ? 'border-[var(--nm-success)]/50 bg-[var(--nm-success-soft)] text-[var(--nm-success)]'
                         : syl.role === 'tonic-accent'
-                          ? 'border-monastic-crimson bg-monastic-crimson/35 text-white font-bold'
+                          ? 'border-monastic-crimson bg-monastic-crimson text-white font-bold'
                           : syl.role === 'superveniens'
-                            ? 'border-purple-500/50 bg-purple-500/20 text-purple-200'
+                            ? 'border-[var(--nm-crimson)]/50 bg-[var(--nm-crimson-soft)] text-[var(--nm-crimson-bright)]'
                             : syl.role === 'cadence-final'
                               ? 'border-monastic-gold bg-monastic-gold/25 text-monastic-gold font-bold'
                               : 'border-monastic-border bg-monastic-secondary text-monastic-text';
@@ -1480,11 +1480,11 @@ export const Pillar1FoundationsView: React.FC = () => {
                 {analyzedPsalmHalfverses.secondHalf.map((syl, idx) => {
                   const badgeClass =
                     syl.role === 'preparatory'
-                      ? 'border-emerald-500/50 bg-emerald-500/15 text-emerald-300'
+                      ? 'border-[var(--nm-success)]/50 bg-[var(--nm-success-soft)] text-[var(--nm-success)]'
                       : syl.role === 'tonic-accent'
-                        ? 'border-monastic-crimson bg-monastic-crimson/35 text-white font-bold'
+                        ? 'border-monastic-crimson bg-monastic-crimson text-white font-bold'
                         : syl.role === 'superveniens'
-                          ? 'border-purple-500/50 bg-purple-500/20 text-purple-200'
+                          ? 'border-[var(--nm-crimson)]/50 bg-[var(--nm-crimson-soft)] text-[var(--nm-crimson-bright)]'
                           : syl.role === 'cadence-final'
                             ? 'border-monastic-gold bg-monastic-gold/25 text-monastic-gold font-bold'
                             : 'border-monastic-border bg-monastic-secondary text-monastic-text';

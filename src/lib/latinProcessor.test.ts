@@ -16,7 +16,7 @@ import {
   generateModalHarmonization,
   HARMONIZATION_STYLES,
 } from './modalHarmonizer.ts';
-import { VATICANA_REPERTOIRE } from '../data/vaticanaRepertoire.ts';
+import { VATICANA_REPERTOIRE, EDITORIAL_REPERTOIRE } from '../data/vaticanaRepertoire.ts';
 
 describe('Procesador Automático de Latín Litúrgico', () => {
   describe('1. Silabeador Litúrgico Automático', () => {
@@ -280,6 +280,33 @@ describe('Procesador Automático de Latín Litúrgico', () => {
       );
       assert.equal(pedagogico.events[0].tenorMidi, null);
       assert.notEqual(potiron.events[0].tenorMidi, null);
+    });
+  });
+
+  describe('6. Repertorio Editorial (Adoramus te sanctissime y catálogo ampliado)', () => {
+    it('parsea y armoniza con 5/5 criterios editoriales todas las piezas de EDITORIAL_REPERTOIRE', () => {
+      assert.ok(EDITORIAL_REPERTOIRE.length >= 4);
+      const adoramus = EDITORIAL_REPERTOIRE[0];
+      assert.equal(adoramus.id, 'adoramus-te-sanctissime');
+      assert.equal(adoramus.mode, 1);
+
+      for (const piece of EDITORIAL_REPERTOIRE) {
+        const doc = parseGabcDocument(piece.gabc);
+        assert.ok(doc.syllables.length > 0, `Sílabas vacías en ${piece.title}`);
+        for (const styleObj of HARMONIZATION_STYLES) {
+          const result = generateModalHarmonization(doc, styleObj.id);
+          assert.equal(result.events.length, doc.syllables.length);
+          assert.equal(result.auditChecklist.length, 5);
+          for (const check of result.auditChecklist) {
+            assert.equal(
+              check.passed,
+              true,
+              `Fallo en ${piece.title} (${styleObj.id}) -> ${check.title}: ${check.summary}`
+            );
+          }
+          assert.equal(result.allChecksPassed, true);
+        }
+      }
     });
   });
 });
